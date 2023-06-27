@@ -1,51 +1,68 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
+/* Registration */
+
+body, html {
     margin: 0;
     padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
 }
 
 .container {
-    position: absolute;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    border-radius: 5px;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
-.container h2{
-    color: #0077B6;
-}
-
-.input-field {
+.image-side {
+    width: 50%;
+    position: relative;
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    align-items: center;
+    overflow: hidden;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (e.g., 1280x720) */
 }
 
-.input-field input {
+.image-side > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.form-side {
+    width: 50%;
+    padding: 30px;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px;
+}
+
+input[type=text], input[type=email], input[type=password] {
+    margin-bottom: 15px;
     padding: 10px;
-    width: 200px;
+    border: none;
     border-radius: 5px;
-    border: 1px solid #ccc;
 }
 
-.login-button {
-    padding: 10px 20px;
-    font-size: 16px;
+input[type=submit] {
+    padding: 10px;
     border: none;
-    background-color: #4CAF50;
-    color: white;
     border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
     cursor: pointer;
 }
 
-.login-button[disabled] {
-    background-color: lightgray;
-    cursor: not-allowed;
-}
+/* Registration End */
