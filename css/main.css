@@ -1,20 +1,27 @@
-/* Registration */
-
+/* Global */
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
-    overflow: hidden;
-}
 
-.container {
+}
+header {
+    background-color: #f2f2f2;
+    color: #fff;
+    padding-bottom: 2%;
+}
+/* Global End */
+
+/* Registration */
+
+.container_register {
     display: flex;
     min-height: 100vh;
     overflow: hidden;
 }
 
-.image-side {
+.container_register .image-side {
     width: 50%;
     position: relative;
     display: flex;
@@ -24,7 +31,7 @@ body, html {
     padding-bottom: 56.25%; /* 16:9 aspect ratio (e.g., 1280x720) */
 }
 
-.image-side > img {
+.container_register .image-side > img {
     position: absolute;
     top: 0;
     left: 0;
@@ -33,7 +40,7 @@ body, html {
     object-fit: cover;
 }
 
-.form-side {
+.container_register .form-side {
     width: 50%;
     padding: 30px;
     background-color: #f0f0f0;
@@ -42,21 +49,21 @@ body, html {
     align-items: center;
 }
 
-form {
+.container_register form {
     display: flex;
     flex-direction: column;
     width: 100%;
     max-width: 500px;
 }
 
-input[type=text], input[type=email], input[type=password] {
+.container_register input[type=text], input[type=email], input[type=password] {
     margin-bottom: 15px;
     padding: 10px;
     border: none;
     border-radius: 5px;
 }
 
-input[type=submit] {
+.container_register input[type=submit] {
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -66,3 +73,152 @@ input[type=submit] {
 }
 
 /* Registration End */
+
+/* Vegas Slider */
+
+#vegas-slider {
+    width: 80%;
+    height: 80vh;
+    margin: 0 auto;
+    max-width: 1000px;
+    padding-top: 2%;
+    background-color: #f2f2f2;
+}
+
+/* Style for navigation buttons */
+.vegas-prev, .vegas-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    cursor: pointer;
+    z-index: 1;
+    transition: background-color 0.3s;
+}
+
+.vegas-prev:hover, .vegas-next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.vegas-prev {
+    left: 20px;
+}
+
+.vegas-next {
+    right: 20px;
+}
+
+/* Style for slide indicators */
+
+#vegas-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    z-index: 1;
+}
+
+.vegas-indicator {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #333;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 1;
+}
+
+.vegas-indicator:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.vegas-indicator.current {
+    background-color: #fff;
+    z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+    /* Adjust the breakpoint value as needed */
+    #vegas-slider img {
+        object-position: center top; /* Adjust the positioning if necessary */
+    }
+}
+
+/* Vegas Slider End  */
+
+
+/* Main */
+main{
+    padding-top: 3%;
+}
+/* Main End */
+
+
+/* Product List  */
+
+#searchSection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+}
+
+.input-group {
+    width: 400px;
+    max-width: 100%;
+}
+
+.btn-primary {
+    height: 100%;
+}
+
+#productsSection{
+    padding-top: 0.5%;
+}
+
+#productList {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.productItem {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.productImage {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.productDetails {
+    text-align: center;
+}
+
+.productName {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.productPrice {
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.productQuantity {
+    color: #888;
+}
+
+/* Product List End  */
