@@ -3,9 +3,6 @@ const passwordInput = document.getElementById('password');
 const loginButton = document.getElementById('loginBtn');
 
 let originalPosition = 0;
-const buttonWidth = loginButton.offsetWidth;
-
-
 usernameInput.addEventListener('input', validateInputs);
 passwordInput.addEventListener('input', validateInputs);
 
