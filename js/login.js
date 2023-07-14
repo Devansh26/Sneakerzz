@@ -44,3 +44,9 @@ function moveButton(event) {
         loginButton.style.left = `${originalPosition + offsetX}px`;
     }
 }
+
+
+function login() {
+    event.preventDefault();
+    window.location.href = "./html/home.html"
+}
