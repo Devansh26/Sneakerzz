@@ -32,16 +32,17 @@
     <!-- Register -->
     <div class="container_register">
         <h2>Login</h2>
-        <form method="POST" action="html/home.html">
-            <div class="input-field">
-                <label for="username"></label><input type="text" id="username" placeholder="Username">
-            </div>
-            <div class="input-field">
-                <label for="password"></label><input type="password" id="password" placeholder="Password">
-            </div>
-            <button class="login-button" id="loginBtn" disabled>Login</button><br>
-            <a href="html/register.html">Register</a>
-        </form>
+
+        <div class="input-field">
+            <label for="username"></label><input type="text" id="username" placeholder="Username">
+        </div>
+        <div id="errorMsg" style="color: red;"></div>
+
+        <div class="input-field">
+            <label for="password"></label><input type="password" id="password" placeholder="Password">
+        </div>
+        <button class="login-button" id="loginBtn" onclick="login()" disabled>Login</button><br>
+        <a href="html/register.html">Register</a>
     </div>
     <!-- Register End -->
 

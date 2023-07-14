@@ -1,4 +1,48 @@
-nav {
-    display: flex;
-    justify-content: flex-end;
+
+/* Media query for iframe navbar */
+
+/* screens with a maximum width of 768px */
+@media (max-width: 768px) {
+    .frame_nav {
+        height: 10rem;
+    }
 }
+
+/* screens with a minimum width of 769px and a maximum width of 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .frame_nav {
+        height: 4rem;
+    }
+}
+
+/* screens with a minimum width of 1025px and a maximum width of 1440px */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .frame_nav {
+        height: 5rem;
+    }
+}
+
+/* screens with a minimum width of 1441px */
+@media (min-width: 1441px) {
+    .frame_nav {
+        height: 6rem;
+    }
+}
+
+/* Media query for iframe navbar End */
+
+
+footer {
+    /* Add styles for your footer here */
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+
+
+
+
+
+
