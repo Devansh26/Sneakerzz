@@ -8,6 +8,7 @@ passwordInput.addEventListener('input', validateInputs);
 
 document.addEventListener('mousemove', moveButton);
 
+
 function validateInputs() {
     const usernameValue = usernameInput.value.trim();
     const passwordValue = passwordInput.value.trim();
@@ -42,4 +43,10 @@ function moveButton(event) {
         const offsetX = cursorX - buttonRight;
         loginButton.style.left = `${originalPosition + offsetX}px`;
     }
+}
+
+function login() {
+    event.preventDefault();
+    console.log("In Login");
+    window.location.href = "./html/home.html"
 }
