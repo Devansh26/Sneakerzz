@@ -6,6 +6,22 @@
     <link rel="stylesheet" href="css/bg.css">
     <link rel="stylesheet" href="css/index.css">
 
+    <!-- Standard favicon for most devices -->
+    <link rel="icon" type="image/png" href="favicon_io/favicon-16x16.png" sizes="16x16">
+
+    <!-- For high-resolution devices with touch screens -->
+    <link rel="icon" type="image/png" href="favicon_io/favicon-32x32.png" sizes="32x32">
+
+    <!-- For Apple iOS devices -->
+    <link rel="apple-touch-icon" href="favicon_io/apple-touch-icon.png">
+
+    <!-- For Android devices -->
+    <link rel="icon" type="image/png" href="favicon_io/android-chrome-192x192.png" sizes="192x192">
+
+    <!-- For Windows 8/10 tiles -->
+    <meta name="msapplication-TileImage" content="favicon_io/ms-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+
 </head>
 <body>
 
@@ -13,17 +29,21 @@
     <div id="particles-js"></div>
     <!-- Particle Background End -->
 
+    <!-- Register -->
     <div class="container_register">
         <h2>Login</h2>
-        <div class="input-field">
-            <label for="username"></label><input type="text" id="username" placeholder="Username">
-        </div>
-        <div class="input-field">
-            <label for="password"></label><input type="password" id="password" placeholder="Password">
-        </div>
-        <button class="login-button" id="loginBtn" disabled>Login</button>
-        <a href="html/register.html">Register</a>
+        <form method="POST" action="html/home.html">
+            <div class="input-field">
+                <label for="username"></label><input type="text" id="username" placeholder="Username">
+            </div>
+            <div class="input-field">
+                <label for="password"></label><input type="password" id="password" placeholder="Password">
+            </div>
+            <button class="login-button" id="loginBtn" disabled>Login</button><br>
+            <a href="html/register.html">Register</a>
+        </form>
     </div>
+    <!-- Register End -->
 
     <!-- Scripts -->
     <script src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>

@@ -3,8 +3,6 @@
 <head>
     <title>Sneakerzzz</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css">
 
@@ -16,6 +14,22 @@
 
     <!-- Include Vegas JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vegas/2.4.4/vegas.min.js"></script>
+
+    <!-- Standard favicon for most devices -->
+    <link rel="icon" type="image/png" href="../favicon_io/favicon-16x16.png" sizes="16x16">
+
+    <!-- For high-resolution devices with touch screens -->
+    <link rel="icon" type="image/png" href="../favicon_io/favicon-32x32.png" sizes="32x32">
+
+    <!-- For Apple iOS devices -->
+    <link rel="apple-touch-icon" href="../favicon_io/apple-touch-icon.png">
+
+    <!-- For Android devices -->
+    <link rel="icon" type="image/png" href="../favicon_io/android-chrome-192x192.png" sizes="192x192">
+
+    <!-- For Windows 8/10 tiles -->
+    <meta name="msapplication-TileImage" content="../favicon_io/ms-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
 
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
@@ -44,9 +58,11 @@
     <!-- Slide indicators -->
     <div id="vegas-indicators"></div>
 
+    <!-- Main -->
     <main class="container_register">
-
         <div class="container">
+
+            <!-- Search input -->
             <section id="searchSection" class="text-center">
                 <div class="input-group">
                     <label for="searchBar"></label><input type="text" class="form-control" id="searchBar" placeholder="Search products...">
@@ -54,6 +70,7 @@
                 </div>
             </section>
 
+            <!-- Product List -->
             <section id="productsSection">
                 <h2 class="text-center mb-4">Products</h2>
                 <ul id="productList">
@@ -84,14 +101,13 @@
                     <!-- Repeat the above list items for each product item -->
                 </ul>
             </section>
+
         </div>
-
-
     </main>
 
     <!-- Include Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
-
+    <!-- import js file -->
     <script  src="../js/home.js"></script>
 
 </body>
