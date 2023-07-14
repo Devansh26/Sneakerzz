@@ -6,6 +6,7 @@ let originalPosition = 0;
 usernameInput.addEventListener('input', validateInputs);
 passwordInput.addEventListener('input', validateInputs);
 
+
 document.addEventListener('mousemove', moveButton);
 
 function validateInputs() {
