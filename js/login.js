@@ -13,7 +13,7 @@ function validateInputs() {
     const usernameValue = usernameInput.value.trim();
     const passwordValue = passwordInput.value.trim();
 
-    if (usernameValue !== '' && passwordValue !== '') {
+    if (usernameValue !== '' && passwordValue !== '' && validateEmail()) {
         loginButton.disabled = false;
         loginButton.classList.add('enabled');
         loginButton.style.left = '0';
@@ -45,8 +45,27 @@ function moveButton(event) {
     }
 }
 
+function validateEmail() {
+    const emailInput = document.getElementById('username');
+    const errorMsg = document.getElementById('errorMsg');
+
+    const emailValue = emailInput.value.trim();
+
+    // Regular expression for email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailValue === '') {
+        errorMsg.textContent = 'Please enter an email.';
+    } else if (!emailRegex.test(emailValue)) {
+        errorMsg.textContent = 'Invalid email format.';
+    } else {
+        // Clear the error message and proceed with login
+        errorMsg.textContent = '';
+        return true;
+        // Perform login logic here
+    }
+}
 
 function login() {
-    event.preventDefault();
     window.location.href = "./html/home.html"
 }
