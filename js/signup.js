@@ -7,7 +7,7 @@ function validateForm() {
   const lastName = document.getElementById('last_name').value;
   const email = document.getElementById('email').value;
   const password = document.getElementById('pwd').value;
-  const checkBox = document.getElementById('checkbox').value;
+  const checkBox = document.getElementById('checkbox');
 
   const nameRegex = /^[A-Za-z]+$/;
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -18,26 +18,43 @@ function validateForm() {
   if (!nameRegex.test(firstName)) {
     document.getElementById('first_name_error').textContent = 'Please enter a valid first name.';
     isValid = false;
+  } else {
+    document.getElementById('first_name_error').textContent = '';
   }
 
   if (!nameRegex.test(lastName)) {
     document.getElementById('last_name_error').textContent = 'Please enter a valid last name.';
     isValid = false;
+  } else {
+    document.getElementById('last_name_error').textContent = '';
   }
 
   if (!emailRegex.test(email)) {
     document.getElementById('email_error').textContent = 'Please enter a valid email address.';
     isValid = false;
+  } else {
+    document.getElementById('email_error').textContent = '';
   }
 
   if (!passwordRegex.test(password)) {
     document.getElementById('pwd_error').textContent = 'Password must be at least 8 characters long and contain at least one number, one lowercase letter, and one uppercase letter.';
     isValid = false;
   }
+  else {
+    document.getElementById('pwd_error').textContent = '';
+  }
 
-  if (!checkBox.checked){
-    document.getElementById("checkbox_error").textContent = "You must accept the terms and conditions by checking the Checkbox";
-  } 
+
+  if (!checkBox.checked) {
+    document.getElementById("checkbox_error").textContent = 'You must accept the terms and conditions by checking the Checkbox';
+    isValid = false;
+    console.log("in check box if")
+    console.log("Checkbox?: ", checkBox.checked);
+  } else {
+    console.log("Checkbox?: ", checkBox.checked);
+    console.log("in check box else")
+    document.getElementById("checkbox_error").textContent = '';
+  }
 
 
   console.log("Valid?: " + isValid)
