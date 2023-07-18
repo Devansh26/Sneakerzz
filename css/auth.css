@@ -193,6 +193,24 @@ body{
     background-color: #3785bde0;
 }
 
+.wrapper .login{
+    padding: 12px;
+    background: #3786bd;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 130px;
+    border: none;
+    margin: 6px 0 50px 0px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.wrapper .login:hover{
+    background-color: #3785bde0;
+}
+
 .wrapper a{
     text-decoration: none;
 }
