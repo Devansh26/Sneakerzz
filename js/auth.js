@@ -177,7 +177,6 @@ function validateLogin() {
   const password = document.getElementById('pwd').value;
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/;
 
   let isValid = true;
 
@@ -186,14 +185,6 @@ function validateLogin() {
     isValid = false;
   } else {
     document.getElementById('email_error').textContent = '';
-  }
-
-  if (!passwordRegex.test(password)) {
-    document.getElementById('pwd_error').textContent = 'Password must be at least 8 characters long and contain at least one number, one lowercase letter, and one uppercase letter.';
-    isValid = false;
-  }
-  else {
-    document.getElementById('pwd_error').textContent = '';
   }
 
   if (isValid) {
