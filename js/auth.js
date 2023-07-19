@@ -37,8 +37,7 @@ function insertUser(user) {
 
     // handle success case
     query.onsuccess = function (event) {
-      console.log(event);
-      window.href = './login.html'
+      window.location.href = './login.html';
     };
 
     // handle the error case
@@ -86,7 +85,7 @@ function checkCredentials(credetials) {
       } else {
         // console.table(event.target.result);
         alert("Welcome " + event.target.result.email + "!");
-        window.location.href = 'home.html';
+        window.location.href = './home.html';
       }
     };
 
