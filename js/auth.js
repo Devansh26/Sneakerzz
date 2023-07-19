@@ -84,8 +84,12 @@ function checkCredentials(credetials) {
         alert("Invalid Credentials! Please try again later.");
       } else {
         // console.table(event.target.result);
-        alert("Welcome " + event.target.result.email + "!");
-        window.location.href = './home.html';
+        if (event.target.result.email == credetials.email && event.target.result.password == credetials.password) {
+          alert("Welcome " + event.target.result.email + "!");
+          window.location.href = './home.html';
+        } else {
+          alert("Invalid Credentials! Please try again later.");
+        }
       }
     };
 
