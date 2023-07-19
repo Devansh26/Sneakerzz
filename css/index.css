@@ -10,7 +10,7 @@ body {
 
 /* Login Screen */
 
-.container_register {
+.container_login {
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -20,24 +20,24 @@ body {
     border-radius: 5px;
 }
 
-.container_register h2{
+.container_login h2{
     color: #0077B6;
 }
 
-.container_register .input-field {
+.container_login .input-field {
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
 }
 
-.container_register .input-field input {
+.container_login .input-field input {
     padding: 10px;
     width: 200px;
     border-radius: 5px;
     border: 1px solid #ccc;
 }
 
-.container_register .login-button {
+.container_login .login-button {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
@@ -50,11 +50,11 @@ body {
     pointer-events: none;
 }
 
-.container_register .login-button.enabled {
+.container_login .login-button.enabled {
     pointer-events: auto;
 }
 
-.container_register .login-button[disabled] {
+.container_login .login-button[disabled] {
     background-color: lightgray;
     cursor: not-allowed;
 }

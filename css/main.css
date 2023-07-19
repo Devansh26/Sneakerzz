@@ -6,71 +6,8 @@ body, html {
     font-family: Arial, sans-serif;
 
 }
-header {
 
-}
 /* Global End */
-
-/* Registration */
-
-.container_register {
-    display: flex;
-    min-height: 100vh;
-    overflow: hidden;
-}
-
-.container_register .image-side {
-    width: 50%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio (e.g., 1280x720) */
-}
-
-.container_register .image-side > img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.container_register .form-side {
-    width: 50%;
-    padding: 30px;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.container_register form {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 500px;
-}
-
-.container_register input[type=text], input[type=email], input[type=password] {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-}
-
-.container_register input[type=submit] {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-}
-
-/* Registration End */
 
 /* Vegas Slider */
 
@@ -158,20 +95,11 @@ main{
 
 /* Product List  */
 
-#searchSection{
+#searchSection {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 10vh;
-}
-
-.input-group {
-    width: 400px;
-    max-width: 100%;
-}
-
-.btn-primary {
-    height: 100%;
+    max-width: 40rem;
+    padding-bottom: 0.5%;
 }
 
 #productsSection{
@@ -220,3 +148,51 @@ main{
 }
 
 /* Product List End  */
+
+/* About us */
+
+.section-padding {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+}
+
+
+.separator {
+    display: flex;
+    align-items: center;
+}
+
+.separator .line {
+    height: 1px;
+    flex: 1;
+    background-color: #dee2e6;
+}
+
+.separator h3 {
+    padding: 0 1.5rem;
+}
+
+.brands .brand-box {
+    -webkit-transition: 0.4s ease;
+    transition: 0.4s ease;
+}
+
+@media all and (min-width: 1024px) {
+
+    .product-zoom-images img:hover,
+    .tabular-product .card:hover img,
+    .product-thumbs .card:hover img,
+    .product-grid .card:hover img,
+    .cartegory-box .card:hover img {
+        -webkit-transform: scale(1.08);
+        transform: scale(1.08);
+    }
+
+    .brands .brand-box:hover {
+        -webkit-transform: scale(1.08);
+        transform: scale(1.08);
+    }
+
+}
+
+/* About us End  */
