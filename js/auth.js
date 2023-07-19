@@ -1,8 +1,113 @@
+function insertUser(user) {
+  // open the CRM database with the version 1
+  const request = indexedDB.open('Sneakerzz', 1);
+
+  // create the Contacts object store and indexes
+  request.onupgradeneeded = (event) => {
+    let db = event.target.result;
+
+    // create the Contacts object store 
+    // with auto-increment id
+    let store = db.createObjectStore('users', {
+      keyPath: 'email',
+    });
+
+    // create an index on the email property
+    let index = store.createIndex('email', 'email', {
+      unique: true
+    });
+  };
+
+  // handle the error event
+  request.onerror = (event) => {
+    console.error(`Database error: ${event.target.errorCode}`);
+  };
+
+  // handle the success event
+  request.onsuccess = (event) => {
+    const db = event.target.result;
+
+    // create a new transaction
+    const txn = db.transaction('users', 'readwrite');
+
+    // get the Contacts object store
+    const store = txn.objectStore('users');
+    //
+    let query = store.put(user);
+
+    // handle success case
+    query.onsuccess = function (event) {
+      console.log(event);
+      window.href = './login.html'
+    };
+
+    // handle the error case
+    query.onerror = function (event) {
+      console.log(event.target.errorCode);
+    }
+
+    // close the database once the 
+    // transaction completes
+    txn.oncomplete = function () {
+      db.close();
+    };
+  };
+}
+
+
+function checkCredentials(credetials) {
+  // open the CRM database with the version 1
+  const request = indexedDB.open('Sneakerzz', 1);
+
+  // create the Contacts object store and indexes
+  request.onupgradeneeded = (event) => {
+    let db = event.target.result;
+  };
+
+  // handle the error event
+  request.onerror = (event) => {
+    console.error(`Database error: ${event.target.errorCode}`);
+  };
+
+  // handle the success event
+  request.onsuccess = (event) => {
+    const db = event.target.result;
+
+    const txn = db.transaction('users', 'readonly');
+    const store = txn.objectStore('users');
+
+    let query = store.get(credetials.email);
+
+    console.log()
+
+    query.onsuccess = (event) => {
+      if (!event.target.result) {
+        alert("Invalid Credentials! Please try again later.");
+      } else {
+        // console.table(event.target.result);
+        alert("Welcome " + event.target.result.email + "!");
+        window.location.href = 'home.html';
+      }
+    };
+
+    query.onerror = (event) => {
+      console.log(event.target.errorCode);
+    }
+
+    txn.oncomplete = function () {
+      db.close();
+    };
+  };
+}
+
+
+
+
 function validateForm() {
 
   event.preventDefault();
 
-    // Perform form validation and display errors
+  // Perform form validation and display errors
   const firstName = document.getElementById('first_name').value;
   const lastName = document.getElementById('last_name').value;
   const email = document.getElementById('email').value;
@@ -53,15 +158,22 @@ function validateForm() {
   }
 
   if (isValid) {
-    // Redirect to login page or perform any other action
-    window.location.href = 'login.html';
+
+    let user = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password
+    }
+    console.log(isValid);
+    insertUser(user);
   }
 }
 
 function validateLogin() {
   event.preventDefault();
 
-    // Perform form validation and display errors
+  // Perform form validation and display errors
   const email = document.getElementById('email').value;
   const password = document.getElementById('pwd').value;
 
@@ -87,7 +199,11 @@ function validateLogin() {
 
   if (isValid) {
     // Redirect to home page or perform any other action
-    window.location.href = 'home.html';
+    credentials = {
+      email: email,
+      password: password
+    }
+    checkCredentials(credentials);
   }
 }
 
