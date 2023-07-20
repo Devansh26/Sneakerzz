@@ -76,22 +76,51 @@ body, html {
     z-index: 1;
 }
 
+/* Responsive styles for smaller screens */
 @media screen and (max-width: 768px) {
-    /* Adjust the breakpoint value as needed */
-    #vegas-slider img {
-        object-position: center top; /* Adjust the positioning if necessary */
+    #vegas-slider {
+        width: 100%;
+        height: 60vh;
+        padding-top: 0;
+    }
+
+    .vegas-prev,
+    .vegas-next {
+        font-size: 18px;
+    }
+
+    .vegas-prev {
+        left: 10px;
+    }
+
+    .vegas-next {
+        right: 10px;
+    }
+
+    #vegas-indicators {
+        margin-top: 5px;
+    }
+
+    .vegas-indicator {
+        width: 8px;
+        height: 8px;
+        margin: 3px;
     }
 }
-
 /* Vegas Slider End  */
 
 
 /* Main */
-main{
+main {
     padding-top: 3%;
 }
+
 /* Main End */
 
+/* home.html */
+
+
+/* products.html */
 
 /* Product List  */
 
@@ -102,7 +131,7 @@ main{
     padding-bottom: 0.5%;
 }
 
-#productsSection{
+#productsSection {
     padding-top: 0.5%;
 }
 
@@ -155,7 +184,6 @@ main{
     padding-top: 2rem !important;
     padding-bottom: 2rem !important;
 }
-
 
 .separator {
     display: flex;
