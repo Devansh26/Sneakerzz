@@ -6,15 +6,17 @@ $(document).ready(function() {
 
     $vegasSlider.vegas({
         slides: [
-            {src: 'https://wallpaperaccess.com/full/1621057.jpg'},
-            {src: 'https://free4kwallpapers.com/uploads/originals/2015/07/18/nike-shoes.jpg'},
-            {src: 'https://wallpapercave.com/wp/wp2461042.jpg'}
+            {src: 'https://cdn.wallpapersafari.com/25/79/Ad1IKq.jpg'},
+            {src: 'https://media.wired.com/photos/5d154dd7c4e1580009f9fe26/master/w_2560%2Cc_limit/gear_new-balance-990.jpg'},
+            {src: 'https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWRpZGFzJTIwc2hvZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80'},
+            {src: 'https://wallpaperaccess.com/full/1176897.jpg'},
+            {src: 'https://wallpaperboat.com/wp-content/uploads/2020/10/20/57135/yeezy-20.jpg'}
         ],
-        transition: 'fade',
+        transition: 'slideLeft2',
         navigation: true,
-        transitionDuration: 2000,
-        delay: 5000,
-        animationDuration: 2000,
+        transitionDuration: 1000,
+        delay: 2500,
+        animationDuration: 1000,
         timer: true,
         timerProgressBar: true,
         slidesToKeep: 3,

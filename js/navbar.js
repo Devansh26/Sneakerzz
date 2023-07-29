@@ -7,13 +7,13 @@ window.addEventListener("DOMContentLoaded", function () {
             navbarContainer.innerHTML = xhr.responseText;
 
             // Get the current page URL
-            var currentPage = window.location.href;
+            const currentPage = window.location.href;
 
             // Get all the navbar links
-            var navLinks = navbarContainer.getElementsByTagName("a");
+            const navLinks = navbarContainer.getElementsByTagName("a");
 
             // Loop through the navbar links and set the active class to the corresponding link
-            for (var i = 0; i < navLinks.length; i++) {
+            for (let i = 0; i < navLinks.length; i++) {
                 if (navLinks[i].href === currentPage) {
                     navLinks[i].classList.add("active");
                 }
