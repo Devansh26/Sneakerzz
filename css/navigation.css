@@ -37,43 +37,40 @@
   transition: background-color 0.3s, color 0.3s;
 }
 
-.footer a.btn-floating i {
+a.btn-floating i {
   vertical-align: middle;
 }
 
-/* Hover effect for social media icons */
-.footer a.btn-floating:hover {
-  color: #fff;
+.btn-outline-light.btn-floating {
+  position: relative;
+  overflow: hidden;
 }
 
-.footer a.btn-floating:hover.fa-facebook-f {
+
+/* Hover effect for social media icons */
+#footerContainer a.btn-floating:hover {
+  color: #fff;
+} 
+
+#footerContainer a.btn-floating:hover i.fa-facebook-f{
   background-color: #1877f2; /* Facebook Blue */
 }
 
-.footer a.btn-floating:hover.fa-twitter {
-  background-color: #1da1f2; /* Twitter Cayn */
+#footerContainer a.btn-floating i.fa-twitter:hover {
+  background-color: #1da1f2; /* Twitter Cyan */
 }
 
-.footer a.btn-floating:hover.fa-google {
+#footerContainer a.btn-floating:hover i.fa-google {
   background-color: #ea4335; /* Google Red */
 }
 
-.footer a.btn-floating:hover.fa-instagram {
+#footerContainer a.btn-floating:hover i.fa-instagram {
   background-color: #8a3ab9; /* Instagram Dark Maroon */
 }
 
-.footer a.btn-floating:hover.fa-linkedin-in {
+#footerContainer a.btn-floating:hover i.fa-linkedin-in {
   background-color: #0077b5; /* LinkedIn Blue */
 }
-
-.footer a.btn-floating:hover.fa-github {
-  background-color: #333; /* GitHub Dark Blue */
-}
-
-
-
-
-
 
 
 
