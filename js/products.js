@@ -27,8 +27,9 @@ addToCartButtons.forEach((button) => {
     const productName = button.dataset.productName;
     const category = button.dataset.productCategory;
     const price = button.dataset.productPrice;
+    const image = button.dataset.productImage
 
-    button.addEventListener("click", () => addToCart(productName, category, price));
+    button.addEventListener("click", () => addToCart(productName, category, price,image));
 
     button.addEventListener("click", function () {
         // Show the Bootstrap toast
@@ -39,7 +40,7 @@ addToCartButtons.forEach((button) => {
 
 });
 
-function addToCart(productName, category, price) {
+function addToCart(productName, category, price,image) {
 
 
     console.log("Product Name:", productName);
@@ -88,6 +89,7 @@ function addToCart(productName, category, price) {
                     category: category,
                     price: price,
                     quantity: 1, // Set initial quantity to 1
+                    productImage:image,
                 };
                 const addRequest = objectStore.add(productData);
 

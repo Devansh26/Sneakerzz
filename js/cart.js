@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 const productImageDiv = document.createElement("div");
                 productImageDiv.classList.add("product-image");
                 const productImage = document.createElement("img");
-                productImage.src = "dummy-image-url"; // Replace with the actual image URL from the indexedDB
+                productImage.src = cursor.value.productImage; // Replace with the actual image URL from the indexedDB
                 productImageDiv.appendChild(productImage);
 
                 const productDetailsDiv = document.createElement("div");
