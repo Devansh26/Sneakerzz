@@ -2,18 +2,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const saveProfileButton = document.getElementById('saveProfileButton');
     const firstNameInput = document.querySelector('[placeholder="First Name"]');
     const lastNameInput = document.querySelector('[placeholder="Last Name"]');
-    const mobileNumberInput = document.querySelector('[placeholder="Enter phone number"]');
+    const email = document.querySelector('[placeholder="Enter email id"]');
+    const password = document.querySelector('[placeholder="Enter password"]');
     // ... and so on for other input fields
 
     // Open a connection to the IndexedDB database
-    const request = indexedDB.open('Sneakerzz', 1);
+    const request = indexedDB.open("Sneakerzz",1);
 
     request.onsuccess = function (event) {
         const db = event.target.result;
         const transaction = db.transaction(['users'], 'readonly');
         const objectStore = transaction.objectStore('users');
 
-        const getRequest = objectStore.get('ayush@gmail.com'); // Use the appropriate key to retrieve the user's data
+        const userEmail = getCookie('userEmail');
+
+        const getRequest = objectStore.get(userEmail);
 
         getRequest.onsuccess = function (event) {
             const userData = event.target.result;
@@ -22,7 +25,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Pre-fill the input fields with the retrieved data
                 firstNameInput.value = userData.firstName;
                 lastNameInput.value = userData.lastName;
-                mobileNumberInput.value = userData.mobileNumber;
+                email.value = userData.email;
+                password.value= userData.password;
                 // ... and so on for other input fields
             }
         };
@@ -35,9 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
     saveProfileButton.addEventListener('click', function () {
         // Get input field values
         const updatedData = {
+            email: email.value,
             firstName: firstNameInput.value,
             lastName: lastNameInput.value,
-            mobileNumber: mobileNumberInput.value,
+            password: password.value,
             // ... and so on for other fields
         };
 
@@ -47,17 +52,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateProfile(key, data) {
         // Open a connection to the IndexedDB database
-        const request = window.indexedDB.open('Sneakerzz', 1);
+        const request = indexedDB.open('Sneakerzz', 1);
 
         request.onsuccess = function (event) {
             const db = event.target.result;
             const transaction = db.transaction(['users'], 'readwrite');
             const objectStore = transaction.objectStore('users');
 
-            const putRequest = objectStore.put(data, key);
+            const putRequest = objectStore.put(data);
 
             putRequest.onsuccess = function () {
                 console.log('Profile data updated:', data);
+                const toastEl = document.querySelector(".toast");
+                const bootstrapToast = new bootstrap.Toast(toastEl);
+                bootstrapToast.show();
             };
 
             transaction.oncomplete = function () {
@@ -66,3 +74,11 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 });
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+    }
+}

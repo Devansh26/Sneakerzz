@@ -1,6 +1,17 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // Attach the event listener to a parent element (navbarContainer)
+    const navbarContainer = document.getElementById('navbarContainer');
+    navbarContainer.addEventListener('click', function(event) {
+        if (event.target && event.target.id === 'logoutLink') {
+            event.preventDefault(); // Prevent the default link behavior
+            deleteSessionCookie();
+        }
+    });
+});
+
 window.addEventListener("DOMContentLoaded", function () {
-    var navbarContainer = document.getElementById("navbarContainer");
-    var xhr = new XMLHttpRequest();
+    const navbarContainer = document.getElementById("navbarContainer");
+    const xhr = new XMLHttpRequest();
     xhr.open("GET", "navbar.html", true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -24,8 +35,8 @@ window.addEventListener("DOMContentLoaded", function () {
 });
 
 window.addEventListener("DOMContentLoaded", function () {
-    var footerContainer = document.getElementById("footerContainer");
-    var xhr = new XMLHttpRequest();
+    const footerContainer = document.getElementById("footerContainer");
+    const xhr = new XMLHttpRequest();
     xhr.open("GET", "footer.html", true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -34,3 +45,12 @@ window.addEventListener("DOMContentLoaded", function () {
     };
     xhr.send();
 });
+
+function deleteSessionCookie() {
+    console.log("Delete Session");
+    // Delete sessionToken cookie
+    document.cookie = 'sessionToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    // Delete userEmail cookie
+    document.cookie = 'userEmail=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+    window.location.href="../html/login.html";
+}

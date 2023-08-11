@@ -5,8 +5,21 @@ const fadeTime = 300;
 
 /* Load the products */
 document.addEventListener("DOMContentLoaded", function () {
+
+    const sessionToken = checkSessionCookie();
+
+    if (sessionToken) {
+        // User is authenticated, perform necessary actions
+        console.log("User is authenticated");
+    } else {
+        // User is not authenticated, handle accordingly
+        console.log("User is not authenticated");
+        window.location.href="../html/login.html";
+    }
+
+
     // Open the indexedDB
-    const request = indexedDB.open("Sneakerzz");
+    const request = indexedDB.open("Sneakerzz",1);
 
     let initialTotal = 0;
     let initialSubtotal = 0;
@@ -108,6 +121,18 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
 });
+
+// Retrieve the session token from cookie
+function checkSessionCookie() {
+    const cookies = document.cookie.split('; ');
+    for (const cookie of cookies) {
+        const [name, value] = cookie.split('=');
+        if (name === 'sessionToken') {
+            return value;
+        }
+    }
+    return null;
+}
 
 /* Assign actions */
 // $('.product-quantity input').change( function() {

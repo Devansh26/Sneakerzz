@@ -1,11 +1,11 @@
 // Open or create IndexedDB database
-const dbName = "Sneakerzzz";
+const dbName = "Sneakerzz";
 const dbVersion = 1;
 const userStore = "users";
 
 let db;
 
-const request = indexedDB.open(dbName, dbVersion);
+const request = indexedDB.open(dbName,dbVersion);
 
 request.onerror = (event) => {
   console.error("Error opening IndexedDB:", event.target.error);

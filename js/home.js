@@ -1,6 +1,32 @@
+
+// Retrieve the session token from cookie
+function checkSessionCookie() {
+    const cookies = document.cookie.split('; ');
+    for (const cookie of cookies) {
+        const [name, value] = cookie.split('=');
+        if (name === 'sessionToken') {
+            return value;
+        }
+    }
+    return null;
+}
+
+
 // Vegas Slider
 
 $(document).ready(function() {
+
+    const sessionToken = checkSessionCookie();
+
+    if (sessionToken) {
+        // User is authenticated, perform necessary actions
+        console.log("User is authenticated");
+    } else {
+        // User is not authenticated, handle accordingly
+        console.log("User is not authenticated");
+        window.location.href="../html/login.html";
+    }
+
     const $vegasSlider = $('#vegas-slider');
     const $vegasIndicators = $('#vegas-indicators');
 

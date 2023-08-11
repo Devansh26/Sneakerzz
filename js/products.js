@@ -1,3 +1,30 @@
+
+// Check session on each page
+document.addEventListener('DOMContentLoaded', function() {
+    const sessionToken = checkSessionCookie();
+
+    if (sessionToken) {
+        // User is authenticated, perform necessary actions
+        console.log("User is authenticated");
+    } else {
+        // User is not authenticated, handle accordingly
+        console.log("User is not authenticated");
+        window.location.href="../html/login.html";
+    }
+});
+
+// Retrieve the session token from cookie
+function checkSessionCookie() {
+    const cookies = document.cookie.split('; ');
+    for (const cookie of cookies) {
+        const [name, value] = cookie.split('=');
+        if (name === 'sessionToken') {
+            return value;
+        }
+    }
+    return null;
+}
+
 // Main section
 
 const onSearch = () => {
@@ -48,7 +75,7 @@ function addToCart(productName, category, price,image) {
     console.log("Price:", price);
 
     // Open the IndexedDB database (create it if it doesn't exist)
-    const request = indexedDB.open("Sneakerzz");
+    const request = indexedDB.open("Sneakerzz",1);
 
     request.onupgradeneeded = function (event) {
         const db = event.target.result;
