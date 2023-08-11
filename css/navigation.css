@@ -50,7 +50,7 @@ a.btn-floating i {
 /* Hover effect for social media icons */
 #footerContainer a.btn-floating:hover {
   color: #fff;
-} 
+}
 
 #footerContainer a.btn-floating:hover i.fa-facebook-f{
   background-color: #1877f2; /* Facebook Blue */
@@ -72,5 +72,20 @@ a.btn-floating i {
   background-color: #0077b5; /* LinkedIn Blue */
 }
 
+
+#footerContainer .logo-img {
+    width: 100px; /* Set the width as needed */
+    height: auto; /* Maintain the aspect ratio */
+    margin-right: 10rem; /* Adjust the spacing */
+}
+
+/* Media query for small screens */
+@media (max-width: 576px) {
+    #footerContainer .logo-img {
+        margin-right: 0;
+        margin-bottom: 10px; /* Add some space between logo and other sections */
+        text-align: center; /* Horizontally center the logo */
+    }
+}
 
 
