@@ -75,20 +75,23 @@ function addToCart(productName, category, price,image) {
     console.log("Price:", price);
 
     // Open the IndexedDB database (create it if it doesn't exist)
-    const request = indexedDB.open("Sneakerzz",1);
+    const request = indexedDB.open("Sneakerzz",2);
 
     request.onupgradeneeded = function (event) {
         const db = event.target.result;
+        console.log("Upgrade needed");
         // Create an object store (table) in the database
         if (!db.objectStoreNames.contains("products")) {
             db.createObjectStore("products", {keyPath: "id", autoIncrement: true});
+            console.log("Products created");
         }
     };
 
     request.onsuccess = function (event) {
         const db = event.target.result;
-        const transaction = db.transaction(["products"], "readwrite");
-        const objectStore = transaction.objectStore("products");
+        console.log("Database opened successfully");
+        const transaction = db.transaction(['products'], 'readwrite');
+        const objectStore = transaction.objectStore('products');
 
         // Get all the products from the object store to check if the product is already present
         const getAllRequest = objectStore.getAll();

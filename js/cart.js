@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     // Open the indexedDB
-    const request = indexedDB.open("Sneakerzz",1);
+    const request = indexedDB.open("Sneakerzz",2);
 
     let initialTotal = 0;
     let initialSubtotal = 0;
