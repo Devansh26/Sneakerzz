@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="css/bg.css">
+    <title>Sneakerzz</title>
     <link rel="stylesheet" href="css/index.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <!-- Standard favicon for most devices -->
     <link rel="icon" type="image/png" href="favicon_io/favicon-16x16.png" sizes="16x16">
@@ -25,34 +27,29 @@
 </head>
 <body>
 
-    <a href="./html/login.html">Login</a>
-    <a href="./html/signup.html">Sign Up</a>
-
-    Particle Background
-    <div id="particles-js"></div>
-    <!-- Particle Background End -->
-
-    <!-- Register -->
-    <div class="container_login">
-        <h2>Login</h2>
-
-        <div class="input-field">
-            <label for="username"></label><input type="text" id="username" placeholder="Username">
-        </div>
-        <div id="errorMsg" style="color: red;"></div>
-
-        <div class="input-field">
-            <label for="password"></label><input type="password" id="password" placeholder="Password">
-        </div>
-        <button class="login-button" id="loginBtn" onclick="login()" disabled>Login</button><br>
-        <a href="html/signup.html">Register</a>
+<div class="header d-flex justify-content-center align-items-center vh-100">
+    <div class="buttons text-center">
+        <a href="html/login.html" class="btn btn-primary">Login</a>
+        <a href="html/signup.html" class="btn btn-secondary">Sign Up</a>
     </div>
-    <!-- Register End -->
+</div>
+<div class="container">
+    <div class="absolute circles">
+        <img class="absolute circle c-blue" src="https://s22.postimg.cc/ngd2my9qp/n-blue-circle.png" alt="">
+        <img class="absolute circle c-red" src="https://s22.postimg.cc/9mopxxrg1/n-red-circle.png" alt="">
 
-    <!-- Scripts -->
-    <script src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
-    <script  src="js/bg.js"></script>
-    <script  src="js/login-old.js"></script>
+        <img class="absolute circle c-purple" src="https://s22.postimg.cc/xqfhm8pch/n-purple-circle.png" alt="">
+        <img class="absolute circle c-orange" src="https://s22.postimg.cc/thark2tsx/n-orange-circle.png" alt="">
+    </div>
+    <div class="shoes">
+        <img class="absolute shoe s-blue" src="https://s22.postimg.cc/t4jddxltt/n-blue-shoe.png" alt="">
+        <img class="absolute shoe s-purple" src="https://s22.postimg.cc/5djzvught/n-purple-shoe.png" alt="">
+    </div>
+</div>
+
+<!-- Scripts -->
+<script src='https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js'></script>
+<script src="js/index.js"></script>
 
 </body>
 </html>
