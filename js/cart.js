@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         // User is not authenticated, handle accordingly
         console.log("User is not authenticated");
-        window.location.href="../html/login.html";
+        window.location.href = "../html/login.html";
     }
 
 
     // Open the indexedDB
-    const request = indexedDB.open("Sneakerzz",2);
+    const request = indexedDB.open("Sneakerzz", 2);
 
     let initialTotal = 0;
     let initialSubtotal = 0;
@@ -139,7 +139,7 @@ function checkSessionCookie() {
 //     updateQuantity(this);
 // });
 
-$(document).on('change', '.product-quantity input', function() {
+$(document).on('change', '.product-quantity input', function () {
     updateQuantity(this);
 });
 
@@ -208,3 +208,12 @@ function removeItem(removeButton) {
         recalculateCart();
     });
 }
+
+// Attach an event listener to the "Okay!" button
+document.getElementById('closeAndRedirect').addEventListener('click', function () {
+    // Close the modal
+    $('#orderModal').modal('hide');
+
+    // Redirect the user to products.html
+    window.location.href = 'products.html';
+});
