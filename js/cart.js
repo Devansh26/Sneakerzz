@@ -1,5 +1,5 @@
 /* Set rates + misc */
-const taxRate = 0.05;
+const taxRate = 0.13;
 const shippingRate = 15.0;
 const fadeTime = 300;
 
@@ -211,9 +211,40 @@ function removeItem(removeButton) {
 
 // Attach an event listener to the "Okay!" button
 document.getElementById('closeAndRedirect').addEventListener('click', function () {
+
+    // Empty the cart 
+    clearCart(); // Call your function to empty the cart
+
     // Close the modal
     $('#orderModal').modal('hide');
 
     // Redirect the user to products.html
     window.location.href = 'products.html';
 });
+
+function clearCart() {
+    const request = indexedDB.open("Sneakerzz", 2);
+
+    request.onsuccess = function (event) {
+        console.log("IndexedDB opened successfully for clearing cart.");
+        const db = event.target.result;
+        // Get the products object store
+        const transaction = db.transaction(["products"], "readwrite");
+        const objectStore = transaction.objectStore("products");
+
+        // Clear all items from the object store
+        const clearRequest = objectStore.clear();
+        clearRequest.onsuccess = function (event) {
+            console.log("Cart cleared successfully.");
+            // Now you can perform any other actions needed after clearing the cart.
+            recalculateCart(); // Recalculate the cart totals if needed
+        };
+        clearRequest.onerror = function (event) {
+            console.error("Error clearing cart:", event.target.error);
+        };
+    };
+
+    request.onerror = function (event) {
+        console.error("Error opening IndexedDB:", event.target.error);
+    };
+}

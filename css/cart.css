@@ -168,6 +168,16 @@ label {
     text-align: right;
 }
 
+.totals-item-total label {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#cart-total {
+    font-weight: bold;
+    font-size: 24px;
+}
+
 .totals .totals-item-total {
     font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium", serif;
 }
