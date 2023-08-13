@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const lastNameInput = document.querySelector('[placeholder="Last Name"]');
     const email = document.querySelector('[placeholder="Enter email id"]');
     const password = document.querySelector('[placeholder="Enter password"]');
-    // ... and so on for other input fields
+    const user = document.getElementById('user');
 
     // Open a connection to the IndexedDB database
     const request = indexedDB.open("Sneakerzz",1);
@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const objectStore = transaction.objectStore('users');
 
         const userEmail = getCookie('userEmail');
+
+        user.innerHTML = userEmail;
 
         const getRequest = objectStore.get(userEmail);
 

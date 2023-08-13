@@ -33,11 +33,14 @@
     <div class="container rounded bg-white mt-5 mb-5">
         <div class="row">
             <div class="col-md-3 border-right">
-                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
-                                                                                             width="150px"
-                                                                                             src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
-                        class="font-weight-bold">HI!!</span><span
-                        class="text-black-50">edogaru@mail.com.my</span><span> </span></div>
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5"
+                         width="150px"
+                         src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                         alt="">
+                    <span class="font-weight-bold">HI!!</span>
+                    <span id="user" class="text-black-50"></span>
+                </div>
             </div>
             <div class="col-md-5 border-right">
                 <div class="p-3 py-5">
@@ -45,14 +48,22 @@
                         <h4 class="text-right">Profile Settings</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-6"><label class="labels">First Name</label><input type="text"
-                                                                                             class="form-control"
-                                                                                             placeholder="First Name"
-                                                                                             value=""></div>
-                        <div class="col-md-6"><label class="labels">Last Name</label><input type="text"
-                                                                                            class="form-control"
-                                                                                            value=""
-                                                                                            placeholder="Last Name">
+                        <div class="col-md-6">
+                            <label class="labels">First Name
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="First Name"
+                                       value="">
+                            </label>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="labels">Last Name
+                                <input type="text"
+                                       class="form-control"
+                                       value=""
+                                       placeholder="Last Name">
+                            </label>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -126,7 +137,9 @@
                         <!-- <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control" placeholder="education" value=""></div> -->
                     </div>
                     <div class="mt-5 text-center">
-                        <button id="saveProfileButton" class="btn btn-primary profile-button" type="button">Save Profile</button>
+                        <button id="saveProfileButton" class="btn btn-primary profile-button" type="button">Save
+                            Profile
+                        </button>
                     </div>
                 </div>
             </div>

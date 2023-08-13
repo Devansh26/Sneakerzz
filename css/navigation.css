@@ -10,11 +10,11 @@
 }
 
 #navbarContainer .nav-link:hover {
-    color: #a2d2ff;
+    color: #c1d3fe;
 }
 
 #navbarContainer .nav-link.active {
-    color: #023047;
+    color: #8093f1;
 }
 
 /* Footer style */
