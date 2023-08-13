@@ -1,20 +1,39 @@
-
-#navbarContainer{
-    padding-bottom: 1%;
+#navbarContainer {
+  padding-bottom: 1%;
 }
 
-#navbarContainer .nav-link{
-    color: #f2f2f2;
-    padding-right: 1.5rem;
-    font-family: "Georgia", serif;
+#navbarContainer .nav-link {
+  color: #f2f2f2;
+  padding-right: 1.5rem;
+  font-size: 16px;
+  font-family: "Georgia", serif;
+}
+
+#navbarContainer .fa-shopping-cart {
+  font-size: 20px; /* You can adjust the size as needed */
+  color: #f2f2f2;
+}
+
+.fa-solid.fa-user { /* User icon */
+  font-size: 20px; /* Set the desired size */
+  color: #f2f2f2; /* Set the desired color */
+}
+
+.d-flex.align-items-center a i {
+  margin-right: 10px; /* Adjust the value as needed */
+}
+
+/* Change color of hamburger icon to white */
+.fa-bars {
+  color: #f2f2f2;
 }
 
 #navbarContainer .nav-link:hover {
-    color: #c1d3fe;
+  color: #c1d3fe;
 }
 
 #navbarContainer .nav-link.active {
-    color: #8093f1;
+  color: #8093f1;
 }
 
 /* Footer style */
@@ -46,13 +65,12 @@ a.btn-floating i {
   overflow: hidden;
 }
 
-
 /* Hover effect for social media icons */
 #footerContainer a.btn-floating:hover {
   color: #fff;
 }
 
-#footerContainer a.btn-floating:hover i.fa-facebook-f{
+#footerContainer a.btn-floating:hover i.fa-facebook-f {
   background-color: #1877f2; /* Facebook Blue */
 }
 
@@ -72,20 +90,17 @@ a.btn-floating i {
   background-color: #0077b5; /* LinkedIn Blue */
 }
 
-
 #footerContainer .logo-img {
-    width: 100px; /* Set the width as needed */
-    height: auto; /* Maintain the aspect ratio */
-    margin-right: 10rem; /* Adjust the spacing */
+  width: 100px; /* Set the width as needed */
+  height: auto; /* Maintain the aspect ratio */
+  margin-right: 10rem; /* Adjust the spacing */
 }
 
 /* Media query for small screens */
 @media (max-width: 576px) {
-    #footerContainer .logo-img {
-        margin-right: 0;
-        margin-bottom: 10px; /* Add some space between logo and other sections */
-        text-align: center; /* Horizontally center the logo */
-    }
+  #footerContainer .logo-img {
+    margin-right: 0;
+    margin-bottom: 10px; /* Add some space between logo and other sections */
+    text-align: center; /* Horizontally center the logo */
+  }
 }
-
-
