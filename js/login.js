@@ -1,6 +1,6 @@
 // Open or create IndexedDB database
 const dbName = "Sneakerzz";
-const dbVersion = 1;
+const dbVersion = 2;
 const userStore = "users";
 
 let db;
@@ -74,7 +74,7 @@ function handleLogin(userCredentials, event) {
         if (user && userCredentials.password === user.password) {
             const sessionToken = generateSessionToken();
             setSessionCookie(sessionToken,userCredentials.email);
-            window.location.href = "home.html"
+            window.location.href = "./home.html"
         } else {
             document.getElementById("login_error").textContent = "Invalid Credentials! Try again.";
         }

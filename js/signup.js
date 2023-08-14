@@ -1,6 +1,6 @@
 // Open or create IndexedDB database
 const dbName = "Sneakerzz";
-const dbVersion = 1;
+const dbVersion = 2;
 const userStore = "users";
 
 let db;
