@@ -248,9 +248,6 @@ document.getElementById('checkoutClearCart').addEventListener('click', function 
 
     // Manually show the modal
     $('#orderModal').modal('show');
-
-    // Redirect the user to products.html
-    // window.location.href = 'products.html';
 });
 
 // Attach an event listener to the "Okay!" button
