@@ -240,18 +240,28 @@ function removeItem(removeButton) {
     });
 }
 
-// Attach an event listener to the "Okay!" button
-document.getElementById('closeAndRedirect').addEventListener('click', function () {
+// Attach an event listener to the "Checkout" button
+document.getElementById('checkoutClearCart').addEventListener('click', function () {
 
     // Empty the cart
     clearCart(); // Call your function to empty the cart
 
+    // Manually show the modal
+    $('#orderModal').modal('show');
+
+    // Redirect the user to products.html
+    // window.location.href = 'products.html';
+});
+
+// Attach an event listener to the "Okay!" button
+document.getElementById('closeAndRedirect').addEventListener('click', function () {
     // Close the modal
     $('#orderModal').modal('hide');
 
     // Redirect the user to products.html
     window.location.href = 'products.html';
 });
+
 
 function clearCart() {
     const request = indexedDB.open("Sneakerzz", 2);
