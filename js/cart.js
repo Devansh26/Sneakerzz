@@ -98,6 +98,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 const grandTotalElement = document.getElementById("cart-total");
                 grandTotalElement.textContent = initialTotal.toFixed(2);
 
+                $("#cart-tax").html(tax.toFixed(2));
+                $("#cart-shipping").html(shipping.toFixed(2));
+
                 // Append all elements to the product div
                 productDiv.appendChild(productImageDiv);
                 productDiv.appendChild(productDetailsDiv);
@@ -120,6 +123,8 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Error opening IndexedDB:", event.target.error);
     };
 
+    //recalculateCart();
+
 });
 
 // Retrieve the session token from cookie
@@ -135,9 +140,6 @@ function checkSessionCookie() {
 }
 
 /* Assign actions */
-// $('.product-quantity input').change( function() {
-//     updateQuantity(this);
-// });
 
 $(document).on('change', '.product-quantity input', function () {
     updateQuantity(this);
@@ -146,11 +148,6 @@ $(document).on('change', '.product-quantity input', function () {
 $(document).on("click", ".product-removal button", function () {
     removeItem(this);
 });
-
-
-// $(".product-removal button").click(function () {
-//     removeItem(this);
-// });
 
 /* Recalculate cart */
 function recalculateCart() {
@@ -203,7 +200,41 @@ function updateQuantity(quantityInput) {
 function removeItem(removeButton) {
     /* Remove row from DOM and recalc cart total */
     const productRow = $(removeButton).parent().parent();
+    const productName = productRow.find(".product-title").text();
     productRow.slideUp(fadeTime, function () {
+
+        const request = indexedDB.open("Sneakerzz",2);
+        request.onsuccess = function (event) {
+            console.log("Products Opened successfully")
+            const db = event.target.result;
+            // Get the products object store
+            const transaction = db.transaction(["products"], "readwrite");
+            const objectStore = transaction.objectStore("products");
+
+            const getRequest = objectStore.getAll();
+
+            getRequest.onsuccess = function (event) {
+                const products = event.target.result;
+                // Find the product with the matching name
+                const productToDelete = products.find(product => product.productName === productName);
+                if (productToDelete) {
+                    const deleteRequest = objectStore.delete(productToDelete.id);
+                    deleteRequest.onsuccess = function () {
+                        console.log("Product deleted from IndexedDB:", productName);
+                        recalculateCart();
+                    };
+                    deleteRequest.onerror = function (event) {
+                        console.error("Error deleting product:", event.target.error);
+                    };
+                }
+            };
+
+            getRequest.onerror = function (event) {
+                console.error("Error fetching product:", event.target.error);
+            };
+
+        };
+
         productRow.remove();
         recalculateCart();
     });
@@ -212,7 +243,7 @@ function removeItem(removeButton) {
 // Attach an event listener to the "Okay!" button
 document.getElementById('closeAndRedirect').addEventListener('click', function () {
 
-    // Empty the cart 
+    // Empty the cart
     clearCart(); // Call your function to empty the cart
 
     // Close the modal
