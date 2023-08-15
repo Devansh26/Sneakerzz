@@ -105,6 +105,10 @@ function addToCart(userEmail, productName, category, price,image,selectedSize) {
 
     request.onsuccess = function (event) {
         const db = event.target.result;
+        if (!db.objectStoreNames.contains("products")) {
+            db.createObjectStore("products", {keyPath: "id", autoIncrement: true});
+            console.log("Products created");
+        }
         console.log("Database opened successfully");
         const transaction = db.transaction(['products'], 'readwrite');
         const objectStore = transaction.objectStore('products');
