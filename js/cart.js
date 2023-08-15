@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = "../html/login.html";
     }
 
-
     // Open the indexedDB
     const request = indexedDB.open("Sneakerzz", 2);
 

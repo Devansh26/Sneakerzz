@@ -9,7 +9,7 @@ $(document).ready(function () {
     //console.log("User is authenticated");
     const userEmail = getCookie('userEmail');
     if (getCookie('userEmail')) {
-        const request = indexedDB.open("Sneakerzz", 2);
+        const request = indexedDB.open("Sneakerzz", 1);
 
         request.onsuccess = function (event) {
             const db = event.target.result;
