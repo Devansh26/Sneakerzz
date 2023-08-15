@@ -6,30 +6,31 @@ $(document).ready(function () {
     const username = document.getElementById("username");
 
     // User is authenticated, perform necessary actions
-    console.log("User is authenticated");
+    //console.log("User is authenticated");
+    const userEmail = getCookie('userEmail');
+    if (getCookie('userEmail')) {
+        const request = indexedDB.open("Sneakerzz", 2);
 
-    const request = indexedDB.open("Sneakerzz", 1);
+        request.onsuccess = function (event) {
+            const db = event.target.result;
+            const transaction = db.transaction(['users'], 'readonly');
+            const objectStore = transaction.objectStore('users');
 
-    request.onsuccess = function (event) {
-        const db = event.target.result;
-        const transaction = db.transaction(['users'], 'readonly');
-        const objectStore = transaction.objectStore('users');
+            //const userEmail = getCookie('userEmail');
 
-        const userEmail = getCookie('userEmail');
+            const getRequest = objectStore.get(userEmail);
 
-        const getRequest = objectStore.get(userEmail);
+            getRequest.onsuccess = function (event) {
+                const userData = event.target.result;
 
-        getRequest.onsuccess = function (event) {
-            const userData = event.target.result;
+                username.innerHTML = "Welcome " + userData.firstName;
+            };
 
-            username.innerHTML = "Welcome " + userData.firstName;
+            transaction.oncomplete = function () {
+                db.close();
+            };
         };
-
-        transaction.oncomplete = function () {
-            db.close();
-        };
-    };
-
+    }
 
     const $vegasSlider = $('#vegas-slider');
     const $vegasIndicators = $('#vegas-indicators');
