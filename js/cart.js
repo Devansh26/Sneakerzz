@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const transaction = db.transaction(["products"], "readonly");
         const objectStore = transaction.objectStore("products");
 
+        const userEmail = getCookie('userEmail');
+
         // Open a cursor to fetch all products
         const productsCursor = objectStore.openCursor();
         productsCursor.onsuccess = function (event) {
@@ -39,83 +41,96 @@ document.addEventListener("DOMContentLoaded", function () {
             const cursor = event.target.result;
 
             if (cursor) {
-                console.log("Product found:", cursor.value);
 
-                // Create the product HTML elements
-                const productDiv = document.createElement("div");
-                productDiv.classList.add("product");
+                if (cursor.value.user === userEmail) {
 
-                const productImageDiv = document.createElement("div");
-                productImageDiv.classList.add("product-image");
-                const productImage = document.createElement("img");
-                productImage.src = cursor.value.productImage; // Replace with the actual image URL from the indexedDB
-                productImageDiv.appendChild(productImage);
+                    console.log("Product found:", cursor.value);
 
-                const productDetailsDiv = document.createElement("div");
-                productDetailsDiv.classList.add("product-details");
-                const productTitle = document.createElement("div");
-                productTitle.classList.add("product-title");
-                productTitle.textContent = cursor.value.productName; // Replace with the actual product name from the indexedDB
-                const productDescription = document.createElement("p");
-                productDescription.classList.add("product-description");
-                productDescription.textContent = "Dummy description"; // Replace with the actual description from the indexedDB
-                productDetailsDiv.appendChild(productTitle);
-                productDetailsDiv.appendChild(productDescription);
+                    // Create the product HTML elements
+                    const productDiv = document.createElement("div");
+                    productDiv.classList.add("product");
 
-                const productPriceDiv = document.createElement("div");
-                productPriceDiv.classList.add("product-price");
-                productPriceDiv.textContent = cursor.value.price;
+                    const productImageDiv = document.createElement("div");
+                    productImageDiv.classList.add("product-image");
+                    const productImage = document.createElement("img");
+                    productImage.src = cursor.value.productImage; // Replace with the actual image URL from the indexedDB
+                    productImageDiv.appendChild(productImage);
 
-                const productQuantityDiv = document.createElement("div");
-                productQuantityDiv.classList.add("product-quantity");
-                const productQuantityInput = document.createElement("input");
-                productQuantityInput.type = "number";
-                productQuantityInput.value = cursor.value.quantity; // Replace with the actual quantity from the indexedDB
-                productQuantityInput.min = "1";
-                productQuantityDiv.appendChild(productQuantityInput);
+                    const productDetailsDiv = document.createElement("div");
+                    productDetailsDiv.classList.add("product-details");
+                    const productTitle = document.createElement("div");
+                    productTitle.classList.add("product-title");
+                    productTitle.textContent = cursor.value.productName;
 
-                const productRemovalDiv = document.createElement("div");
-                productRemovalDiv.classList.add("product-removal");
-                const removeProductButton = document.createElement("button");
-                removeProductButton.classList.add("remove-product");
-                removeProductButton.textContent = "Remove";
-                productRemovalDiv.appendChild(removeProductButton);
+                    const productDescription = document.createElement("p");
+                    productDescription.classList.add("product-description");
+                    productDescription.textContent = cursor.value.category;
 
-                const linePrice = parseInt(cursor.value.price) * cursor.value.quantity;
-                initialSubtotal += linePrice;
+                    const productSize = document.createElement("p");
+                    productSize.classList.add("product-size");
+                    productSize.textContent = "Size : " + cursor.value.size;
 
-                const productLinePriceDiv = document.createElement("div");
-                productLinePriceDiv.classList.add("product-line-price");
-                productLinePriceDiv.textContent = linePrice.toFixed(2);
+                    productDetailsDiv.appendChild(productTitle);
+                    productDetailsDiv.appendChild(productDescription);
+                    productDetailsDiv.appendChild(productSize);
 
-                const subtotalElement = document.getElementById("cart-subtotal");
-                subtotalElement.textContent = initialSubtotal.toFixed(2);
-                // Calculate the initial "Grand Total" (subtotal + tax + shipping) and update the element
-                const tax = initialSubtotal * taxRate;
-                const shipping = initialSubtotal > 0 ? shippingRate : 0;
-                initialTotal = initialSubtotal + tax + shipping;
+                    const productPriceDiv = document.createElement("div");
+                    productPriceDiv.classList.add("product-price");
+                    productPriceDiv.textContent = cursor.value.price;
 
-                const grandTotalElement = document.getElementById("cart-total");
-                grandTotalElement.textContent = initialTotal.toFixed(2);
+                    const productQuantityDiv = document.createElement("div");
+                    productQuantityDiv.classList.add("product-quantity");
+                    const productQuantityInput = document.createElement("input");
+                    productQuantityInput.type = "number";
+                    productQuantityInput.value = cursor.value.quantity; // Replace with the actual quantity from the indexedDB
+                    productQuantityInput.min = "1";
+                    productQuantityDiv.appendChild(productQuantityInput);
 
-                $("#cart-tax").html(tax.toFixed(2));
-                $("#cart-shipping").html(shipping.toFixed(2));
+                    const productRemovalDiv = document.createElement("div");
+                    productRemovalDiv.classList.add("product-removal");
+                    const removeProductButton = document.createElement("button");
+                    removeProductButton.classList.add("remove-product");
+                    removeProductButton.textContent = "Remove";
+                    productRemovalDiv.appendChild(removeProductButton);
 
-                // Append all elements to the product div
-                productDiv.appendChild(productImageDiv);
-                productDiv.appendChild(productDetailsDiv);
-                productDiv.appendChild(productPriceDiv);
-                productDiv.appendChild(productQuantityDiv);
-                productDiv.appendChild(productRemovalDiv);
-                productDiv.appendChild(productLinePriceDiv);
+                    const linePrice = parseInt(cursor.value.price) * cursor.value.quantity;
+                    initialSubtotal += linePrice;
 
-                // Append the product div to the shopping cart
-                const shoppingCart = document.querySelector(".shopping-cart");
-                shoppingCart.appendChild(productDiv);
-                const columnLabels = shoppingCart.querySelector(".column-labels");
-                shoppingCart.insertBefore(productDiv, columnLabels.nextSibling);
-                // Move to the next product in the cursor
-                cursor.continue();
+                    const productLinePriceDiv = document.createElement("div");
+                    productLinePriceDiv.classList.add("product-line-price");
+                    productLinePriceDiv.textContent = linePrice.toFixed(2);
+
+                    const subtotalElement = document.getElementById("cart-subtotal");
+                    subtotalElement.textContent = initialSubtotal.toFixed(2);
+                    // Calculate the initial "Grand Total" (subtotal + tax + shipping) and update the element
+                    const tax = initialSubtotal * taxRate;
+                    const shipping = initialSubtotal > 0 ? shippingRate : 0;
+                    initialTotal = initialSubtotal + tax + shipping;
+
+                    const grandTotalElement = document.getElementById("cart-total");
+                    grandTotalElement.textContent = initialTotal.toFixed(2);
+
+                    $("#cart-tax").html(tax.toFixed(2));
+                    $("#cart-shipping").html(shipping.toFixed(2));
+
+                    // Append all elements to the product div
+                    productDiv.appendChild(productImageDiv);
+                    productDiv.appendChild(productDetailsDiv);
+                    productDiv.appendChild(productPriceDiv);
+                    productDiv.appendChild(productQuantityDiv);
+                    productDiv.appendChild(productRemovalDiv);
+                    productDiv.appendChild(productLinePriceDiv);
+
+                    // Append the product div to the shopping cart
+                    const shoppingCart = document.querySelector(".shopping-cart");
+                    shoppingCart.appendChild(productDiv);
+                    const columnLabels = shoppingCart.querySelector(".column-labels");
+                    shoppingCart.insertBefore(productDiv, columnLabels.nextSibling);
+                    // Move to the next product in the cursor
+                    cursor.continue();
+                } else {
+                    cursor.continue();
+                }
             }
         };
     };
@@ -203,7 +218,7 @@ function removeItem(removeButton) {
     const productName = productRow.find(".product-title").text();
     productRow.slideUp(fadeTime, function () {
 
-        const request = indexedDB.open("Sneakerzz",2);
+        const request = indexedDB.open("Sneakerzz", 2);
         request.onsuccess = function (event) {
             console.log("Products Opened successfully")
             const db = event.target.result;
@@ -285,4 +300,12 @@ function clearCart() {
     request.onerror = function (event) {
         console.error("Error opening IndexedDB:", event.target.error);
     };
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+    }
 }

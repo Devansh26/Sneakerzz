@@ -61,7 +61,7 @@ $(document).ready(function() {
             {src: 'https://media.wired.com/photos/5d154dd7c4e1580009f9fe26/master/w_2560%2Cc_limit/gear_new-balance-990.jpg'},
             {src: 'https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWRpZGFzJTIwc2hvZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80'},
             {src: 'https://wallpaperaccess.com/full/1176897.jpg'},
-            {src: 'https://wallpaperboat.com/wp-content/uploads/2020/10/20/57135/yeezy-20.jpg'}
+            {src: 'https://www.yankodesign.com/images/design_news/2022/09/auto-draft/balenciaga_heel_concept_1.jpg'}
         ],
         transition: 'slideLeft2',
         navigation: true,

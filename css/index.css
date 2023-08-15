@@ -1,132 +1,161 @@
-body, h1, h2, p {
-    margin: 0;
-    padding: 0;
+@import url("https://fonts.googleapis.com/css?family=Bangers");
+a,
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+body {
+    height: 100vh;
+    background: rgb(255, 255, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Bangers", serif;
+    overflow: hidden;
+}
+.container {
+    min-height: 400px;
+    min-width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
 }
 
-.buttons{
+.item {
+    background: black;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transform: rotate(-45deg);
+    border: 3px solid black;
+    box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s;
+}
+.item:hover {
+    transform: scale(1.5);
+    position: relative;
+    z-index: 10;
+}
+.item:hover::before {
+    opacity: 1;
+}
+.item:hover .hi {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.item::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transition: all 0.4s;
+}
+.item:nth-child(1) {
+    background: url("https://images.unsplash.com/photo-1492633171473-373002e678b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1533&q=80");
+    background-size: cover;
+    background-position: center;
+    grid-row: 1 / 3;
+    /*   transform: rotate(45deg); */
+}
+.item:nth-child(2) {
+    background: url("https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWRpZGFzJTIwc2hvZXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80");
+    background-size: cover;
+    background-position: center;
+    /*   transform: rotate(45deg); */
+}
+.item:nth-child(3) {
+    background: url("https://media.gq.com/photos/5846e13dc89a6e172656a4ad/16:9/w_2560%2Cc_limit/balenciaga-sneaker-01-2.jpg");
+    background-size: cover;
+    background-position: center;
+    /*   grid-row: 1 / 3; */
+}
+.item:nth-child(4) {
+    background: url("https://e1.pxfuel.com/desktop-wallpaper/262/627/desktop-wallpaper-vans-shoes-cute-shoes-thumbnail.jpg");
+    background-size: cover;
+    background-position: center;
+    postion: relative;
+    z-index: 6;
+}
+.item:nth-child(5) {
+    background: url("https://media.wired.com/photos/5933398ff682204f73698bfb/master/w_2560%2Cc_limit/Mens-Nike-Free-Hyperfeel_detail.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.item:nth-child(6) {
+    background: url("https://images.unsplash.com/photo-1589310853228-439adca878e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29udmVyc2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80");
+    background-size: cover;
+    background-position: center;
+}
+.item:nth-child(7) {
+    background: url("https://images.unsplash.com/photo-1516478177764-9fe5bd7e9717?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80");
+    background-size: cover;
+    background-position: center;
+    /*   transform: rotate(45deg); */
+    grid-column: 2 / 4;
+}
+
+.hi {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#f7ff00, #ffffff);
     top: 50%;
     left: 50%;
+    transform: translate(-60%, -250px) rotate(45deg);
+    border-radius: 10px;
+    transition: all 0.5s;
 }
 
-.container{
+.hi span {
+    transform: rotate(-45deg);
+    font-size: 22px;
 }
 
+.company {
+    font-size: 150px;
+    margin: 80px;
+    text-shadow: -3px 3px 5px rgba(0, 0, 0, 0.5);
+    transition: all 0.4s;
+    transform-origin: center;
+    cursor: pointer;
+}
+.company:hover {
+    transform: scale(1.2);
+    text-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
 
-.container .absolute {
+#jin {
     position: absolute;
-}
-.container .circles {
-    top: 200px;
-    left: 200px;
-    width: 300px;
-    height: 250px;
-}
-.container .c-blue, .container .c-purple {
-    right: 0;
-    width: 250px;
-}
-.container .c-blue {
-    z-index: 2;
-}
-.container .c-red {
-    z-index: 1;
-}
-.container .c-red, .container .c-orange {
-    left: 0;
-    bottom: 20px;
-    width: 150px;
-}
-.container .c-purple, .container .c-orange {
-    transform: scale(0, 0);
-}
-.container .c-purple {
-    z-index: 2;
-    animation: scaleCircles 1s;
-    animation-fill-mode: forwards;
-    animation-delay: 0.6s;
-}
-.container .c-orange {
-    z-index: 2;
-    animation: scaleCircles 1s;
-    animation-fill-mode: forwards;
-    animation-delay: 0.2s;
-}
-.container .s-blue, .container .s-purple {
-    top: 260px;
-    left: 180px;
-    z-index: 5;
-}
-.container .s-blue {
-    width: 350px;
-    opacity: 1;
-    animation: spinAndHide 1.5s;
-    animation-fill-mode: forwards;
-}
-.container .s-blue-hide {
-    display: none;
-    opacity: 0;
-    animation: spinAndShow 1.5s;
-    animation-delay: 4s;
-    animation-fill-mode: forwards;
-}
-.container .s-purple {
-    left: 177px;
-    width: 360px;
-    opacity: 0;
-    animation: spinAndShow 1.5s;
-    animation-fill-mode: forwards;
-}
-.container .s-purple-hide {
-    display: none;
-    opacity: 1;
-    animation: spinAndHide 1.5s;
-    animation-delay: 4s;
-    animation-fill-mode: forwards;
+    font-size: 18px;
+    bottom: 5px;
+    left: 10px;
 }
 
-@-webkit-keyframes spinAndHide {
-    0% {
-        opacity: 1;
-        transform: rotate(0deg);
-    }
-    40% {
-        opacity: 1;
-        transform: rotate(20deg);
-    }
-    80% {
-        opacity: 0.8;
-        transform: rotate(-380deg);
-    }
-    100% {
-        opacity: 0;
-        transform: rotate(-360deg);
-    }
+#jin:hover > a {
+    color: royalblue;
+    transform: scale(1.5);
 }
-@-webkit-keyframes spinAndShow {
-    0% {
-        opacity: 0;
-        transform: rotate(0deg);
-    }
-    40% {
-        opacity: 0;
-        transform: rotate(20deg);
-    }
-    80% {
-        opacity: 1;
-        transform: rotate(-380deg);
-    }
-    100% {
-        opacity: 1;
-        transform: rotate(-360deg);
-    }
+a {
+    display: inline-block;
+    transition: all 0.3s;
+    transform-origin: bottom left;
 }
-@-webkit-keyframes scaleCircles {
-    from {
-        opacity: 0;
-        transform: scale(0, 0);
+
+@media only screen and (max-width: 1100px) {
+    .container {
+        transform: scale(0.7);
     }
-    to {
-        opacity: 1;
-        transform: scale(1, 1);
+    .company {
+        margin: 0;
+        font-size: 50px;
     }
 }

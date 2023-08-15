@@ -4,7 +4,6 @@ body, html {
     padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
-
 }
 
 /* Global End */
@@ -194,6 +193,49 @@ main {
 #productsSection {
     padding-top: 0.5%;
 }
+
+.size-selector {
+    margin-top: 10px;
+}
+
+.size-selector label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.size-options {
+    display: flex;
+    align-items: center;
+}
+
+.size-options input[type="radio"] {
+    display: none;
+}
+
+.size-options label {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin-right: 10px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.size-options label:hover {
+    background-color: #aaa;
+}
+
+.size-options input[type="radio"]:checked + label {
+    background-color: #f50057; /* Change the color for the selected size */
+    color: white;
+}
+
+
 
 /* Product List End  */
 

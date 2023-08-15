@@ -49,6 +49,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // document.getElementById("addProductButton").addEventListener("click", addToCart);
 const addToCartButtons = document.querySelectorAll(".add-to-cart-btn");
+const toastEl = document.querySelector(".toast");
+const toastBody = toastEl.querySelector(".toast-body");
 // Add event listeners to each button
 addToCartButtons.forEach((button) => {
     const productName = button.dataset.productName;
@@ -56,18 +58,31 @@ addToCartButtons.forEach((button) => {
     const price = button.dataset.productPrice;
     const image = button.dataset.productImage
 
-    button.addEventListener("click", () => addToCart(productName, category, price,image));
+    const userEmail = getCookie('userEmail');
+
+    //button.addEventListener("click", () => addToCart(productName, category, price,image));
 
     button.addEventListener("click", function () {
+        const selectedSizeElement = document.querySelector('input[name="size"]:checked');
+        const selectedSize = selectedSizeElement ? selectedSizeElement.value : "";
+
+        if (selectedSize === "") {
+            toastBody.classList.add("bg-danger");
+            toastBody.textContent = "Size not selected for " + productName + "(" + category + ")";
+        } else {
+            addToCart(userEmail, productName, category, price, image, selectedSize);
+            toastBody.classList.remove("bg-danger");
+            toastBody.textContent = "Added to cart";
+        }
+
         // Show the Bootstrap toast
-        const toastEl = document.querySelector(".toast");
         const bootstrapToast = new bootstrap.Toast(toastEl);
         bootstrapToast.show();
     });
 
 });
 
-function addToCart(productName, category, price,image) {
+function addToCart(userEmail, productName, category, price,image,selectedSize) {
 
 
     console.log("Product Name:", productName);
@@ -99,7 +114,8 @@ function addToCart(productName, category, price,image) {
         getAllRequest.onsuccess = function (event) {
             const products = event.target.result;
             const existingProduct = products.find((product) =>
-                product.productName.trim().toLowerCase() === productName.trim().toLowerCase()
+                product.productName.trim().toLowerCase() === productName.trim().toLowerCase() &&
+                product.size === selectedSize
             );
 
             if (existingProduct) {
@@ -115,11 +131,13 @@ function addToCart(productName, category, price,image) {
             } else {
                 // If the product is not found, add a new entry to the table
                 const productData = {
+                    user:userEmail,
                     productName: productName,
                     category: category,
                     price: price,
                     quantity: 1, // Set initial quantity to 1
                     productImage:image,
+                    size:selectedSize,
                 };
                 const addRequest = objectStore.add(productData);
 
@@ -142,3 +160,12 @@ function addToCart(productName, category, price,image) {
     };
 
 }
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+    }
+}
+

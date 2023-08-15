@@ -1,4 +1,28 @@
+// Retrieve the session token from cookie
+function checkSessionCookie() {
+    const cookies = document.cookie.split('; ');
+    for (const cookie of cookies) {
+        const [name, value] = cookie.split('=');
+        if (name === 'sessionToken') {
+            return value;
+        }
+    }
+    return null;
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+
+    const sessionToken = checkSessionCookie();
+
+    if (sessionToken) {
+        // User is authenticated, perform necessary actions
+        console.log("User is authenticated");
+    }else{
+        // User is not authenticated, handle accordingly
+        console.log("User is not authenticated");
+        window.location.href="../html/login.html";
+    }
+
     const saveProfileButton = document.getElementById('saveProfileButton');
     const firstNameInput = document.querySelector('[placeholder="First Name"]');
     const lastNameInput = document.querySelector('[placeholder="Last Name"]');
@@ -7,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const user = document.getElementById('user');
 
     // Open a connection to the IndexedDB database
-    const request = indexedDB.open("Sneakerzz",1);
+    const request = indexedDB.open("Sneakerzz",2);
 
     request.onsuccess = function (event) {
         const db = event.target.result;
@@ -84,3 +108,4 @@ function getCookie(name) {
         return parts.pop().split(';').shift();
     }
 }
+
