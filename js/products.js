@@ -1,3 +1,7 @@
+// Open or create IndexedDB database
+const dbName = "Sneakerzz";
+const dbVersion = 2;
+const userStore = "users";
 
 // Check session on each page
 document.addEventListener('DOMContentLoaded', function() {

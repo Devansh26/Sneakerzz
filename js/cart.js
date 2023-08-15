@@ -1,3 +1,8 @@
+// Open or create IndexedDB database
+const dbName = "Sneakerzz";
+const dbVersion = 2;
+const userStore = "users";
+
 /* Set rates + misc */
 const taxRate = 0.13;
 const shippingRate = 15.0;
