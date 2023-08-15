@@ -1,56 +1,37 @@
-
-// Retrieve the session token from cookie
-function checkSessionCookie() {
-    const cookies = document.cookie.split('; ');
-    for (const cookie of cookies) {
-        const [name, value] = cookie.split('=');
-        if (name === 'sessionToken') {
-            return value;
-        }
-    }
-    return null;
-}
-
-
 // Vegas Slider
 
-$(document).ready(function() {
+$(document).ready(function () {
 
-    const sessionToken = checkSessionCookie();
+    //const sessionToken = checkSessionCookie();
 
     const username = document.getElementById("username");
 
-    if (sessionToken) {
-        // User is authenticated, perform necessary actions
-        console.log("User is authenticated");
 
-        const request = indexedDB.open("Sneakerzz",2);
+    // User is authenticated, perform necessary actions
+    console.log("User is authenticated");
 
-        request.onsuccess = function (event) {
-            const db = event.target.result;
-            const transaction = db.transaction(['users'], 'readonly');
-            const objectStore = transaction.objectStore('users');
+    const request = indexedDB.open("Sneakerzz", 2);
 
-            const userEmail = getCookie('userEmail');
+    request.onsuccess = function (event) {
+        const db = event.target.result;
+        const transaction = db.transaction(['users'], 'readonly');
+        const objectStore = transaction.objectStore('users');
 
-            const getRequest = objectStore.get(userEmail);
+        const userEmail = getCookie('userEmail');
 
-            getRequest.onsuccess = function (event) {
-                const userData = event.target.result;
+        const getRequest = objectStore.get(userEmail);
 
-                username.innerHTML = "Welcome " + userData.firstName;
-            };
+        getRequest.onsuccess = function (event) {
+            const userData = event.target.result;
 
-            transaction.oncomplete = function () {
-                db.close();
-            };
+            username.innerHTML = "Welcome " + userData.firstName;
         };
 
-    } else {
-        // User is not authenticated, handle accordingly
-        console.log("User is not authenticated");
-        window.location.href="../html/login.html";
-    }
+        transaction.oncomplete = function () {
+            db.close();
+        };
+    };
+
 
     const $vegasSlider = $('#vegas-slider');
     const $vegasIndicators = $('#vegas-indicators');
@@ -87,17 +68,17 @@ $(document).ready(function() {
         $vegasIndicators.find('.vegas-indicator').eq(currentSlide).addClass('current');
     }
 
-    $vegasSlider.on('vegaswalk', function() {
+    $vegasSlider.on('vegaswalk', function () {
         updateSlideIndicator();
     });
 
     // Go to previous slide
-    $('.vegas-prev').click(function() {
+    $('.vegas-prev').click(function () {
         $vegasSlider.vegas('previous');
     });
 
     // Go to next slide
-    $('.vegas-next').click(function() {
+    $('.vegas-next').click(function () {
         $vegasSlider.vegas('next');
     });
 });

@@ -73,6 +73,7 @@ addToCartButtons.forEach((button) => {
             addToCart(userEmail, productName, category, price, image, selectedSize);
             toastBody.classList.remove("bg-danger");
             toastBody.textContent = "Added to cart";
+            selectedSizeElement.value = "";
         }
 
         // Show the Bootstrap toast
@@ -111,11 +112,13 @@ function addToCart(userEmail, productName, category, price,image,selectedSize) {
         // Get all the products from the object store to check if the product is already present
         const getAllRequest = objectStore.getAll();
 
+        const userEmail = getCookie('userEmail');
+
         getAllRequest.onsuccess = function (event) {
             const products = event.target.result;
             const existingProduct = products.find((product) =>
                 product.productName.trim().toLowerCase() === productName.trim().toLowerCase() &&
-                product.size === selectedSize
+                product.size === selectedSize && product.user === userEmail
             );
 
             if (existingProduct) {

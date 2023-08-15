@@ -285,14 +285,27 @@ function clearCart() {
         const transaction = db.transaction(["products"], "readwrite");
         const objectStore = transaction.objectStore("products");
 
-        // Clear all items from the object store
-        const clearRequest = objectStore.clear();
-        clearRequest.onsuccess = function (event) {
-            console.log("Cart cleared successfully.");
-            // Now you can perform any other actions needed after clearing the cart.
-            recalculateCart(); // Recalculate the cart totals if needed
+        const userEmail = getCookie('userEmail');
+
+        // Open a cursor to iterate over products
+        const productsCursor = objectStore.openCursor();
+        productsCursor.onsuccess = function (event) {
+            const cursor = event.target.result;
+            if (cursor) {
+                const productUser = cursor.value.user;
+
+                if (productUser === userEmail) {
+                    // Delete the product for the current user
+                    objectStore.delete(cursor.primaryKey);
+                }
+                cursor.continue();
+            } else {
+                console.log("Cart cleared successfully.");
+                // Now you can perform any other actions needed after clearing the cart.
+                recalculateCart(); // Recalculate the cart totals if needed
+            }
         };
-        clearRequest.onerror = function (event) {
+        productsCursor.onerror = function (event) {
             console.error("Error clearing cart:", event.target.error);
         };
     };
