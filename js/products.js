@@ -91,8 +91,8 @@ function addToCart(userEmail, productName, category, price,image,selectedSize) {
     console.log("Price:", price);
 
     // Open the IndexedDB database (create it if it doesn't exist)
-    const request = indexedDB.open("Sneakerzz",2);
-    let newVersion = 2;
+    const request = indexedDB.open("Sneakerzz",1);
+    // let newVersion = 2;
     request.onupgradeneeded = function (event) {
         const db = event.target.result;
         console.log("Upgrade needed");

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Open the indexedDB
-    const request = indexedDB.open("Sneakerzz", 2);
+    const request = indexedDB.open("Sneakerzz", 1);
 
     let initialTotal = 0;
     let initialSubtotal = 0;
@@ -218,7 +218,7 @@ function removeItem(removeButton) {
     const productName = productRow.find(".product-title").text();
     productRow.slideUp(fadeTime, function () {
 
-        const request = indexedDB.open("Sneakerzz", 2);
+        const request = indexedDB.open("Sneakerzz", 1);
         request.onsuccess = function (event) {
             console.log("Products Opened successfully")
             const db = event.target.result;
@@ -276,7 +276,7 @@ document.getElementById('closeAndRedirect').addEventListener('click', function (
 
 
 function clearCart() {
-    const request = indexedDB.open("Sneakerzz", 2);
+    const request = indexedDB.open("Sneakerzz", 1);
 
     request.onsuccess = function (event) {
         console.log("IndexedDB opened successfully for clearing cart.");
