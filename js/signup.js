@@ -13,8 +13,10 @@ request.onerror = (event) => {
 
 request.onupgradeneeded = (event) => {
   db = event.target.result;
-  const objectStore = db.createObjectStore(userStore, { keyPath: "email" });
-  db.createObjectStore("products", {keyPath: "id", autoIncrement: true});
+  if (!db.objectStoreNames.contains("products")) {
+    const objectStore = db.createObjectStore(userStore, { keyPath: "email" });
+  }
+
 };
 
 request.onsuccess = (event) => {
