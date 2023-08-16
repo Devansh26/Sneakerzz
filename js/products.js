@@ -96,9 +96,6 @@ function addToCart(userEmail, productName, category, price,image,selectedSize) {
     request.onupgradeneeded = function (event) {
         const db = event.target.result;
         console.log("Upgrade needed");
-        // if (newVersion > event.oldVersion) {
-
-        // }else{newVersion++;}
 
         // Create an object store (table) in the database
         if (!db.objectStoreNames.contains("products")) {
@@ -109,10 +106,6 @@ function addToCart(userEmail, productName, category, price,image,selectedSize) {
 
     request.onsuccess = function (event) {
         const db = event.target.result;
-        if (!db.objectStoreNames.contains("products")) {
-            db.createObjectStore("products", {keyPath: "id", autoIncrement: true});
-            console.log("Products created");
-        }
         console.log("Database opened successfully");
         const transaction = db.transaction(['products'], 'readwrite');
         const objectStore = transaction.objectStore('products');
