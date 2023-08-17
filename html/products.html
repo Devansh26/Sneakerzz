@@ -51,19 +51,32 @@
 <main>
     <div class="container_products">
 
-
-        <!-- Search input -->
-        <section id="searchSection" class="text-center">
-
-            <div class="input-group">
-                <div class="form-outline">
-                    <input type="search" id="searchBar" class="form-control"/>
-                    <label class="form-label" for="searchBar">Search</label>
+        <section class="d-flex">
+            <!-- Search input -->
+            <div id="searchSection" class="text-center">
+                <div class="input-group">
+                    <div class="form-outline">
+                        <input type="search" id="searchBar" class="form-control"/>
+                        <label class="form-label" for="searchBar">Search</label>
+                    </div>
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
-                <button type="button" class="btn btn-primary">
-                    <i class="fas fa-search"></i>
-                </button>
             </div>
+
+            <div id="filterSection" class="text-center">
+                <h4><strong>Filters : </strong></h4>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="shoesFilter" value="shoes">
+                    <label class="form-check-label" for="shoesFilter">Shoes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="socksFilter" value="socks">
+                    <label class="form-check-label" for="socksFilter">Socks</label>
+                </div>
+            </div>
+
         </section>
 
         <!-- Toast message -->
@@ -73,7 +86,8 @@
                     <div class="toast-body">
 
                     </div>
-                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
+                            aria-label="Close"></button>
                 </div>
             </div>
         </div>
@@ -84,526 +98,552 @@
 
                 <div class="productList">
 
-                    <div class="row">
+                    <div class="shoes">
 
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <div class="card">
+                        <div class="row">
 
-                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                                     data-mdb-ripple-color="light">
-                                    <img src="https://www.kickgame.co.uk/cdn/shop/products/air-jordan-1-mid-black-fire-red-ps-640734-079_1.png?v=1660488827&width=1024"
-                                         class="w-100" alt="" draggable="false"/>
-                                    <div class="mask">
-                                        <div class="d-flex justify-content-start align-items-end h-100">
-                                            <h5><span class="badge bg-primary ms-2">Eco🌿</span></h5>
+                            <div class="col-lg-4 col-md-12 mb-4">
+                                <div class="card">
+
+                                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                         data-mdb-ripple-color="light">
+                                        <img src="https://www.kickgame.co.uk/cdn/shop/products/air-jordan-1-mid-black-fire-red-ps-640734-079_1.png?v=1660488827&width=1024"
+                                             class="w-100" alt="" draggable="false"/>
+                                        <div class="mask">
+                                            <div class="d-flex justify-content-start align-items-end h-100">
+                                                <h5><span class="badge bg-primary ms-2">Eco🌿</span></h5>
+                                            </div>
+                                        </div>
+                                        <div class="hover-overlay">
+                                            <div class="mask"
+                                                 style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                         </div>
                                     </div>
-                                    <div class="hover-overlay">
-                                        <div class="mask"
-                                             style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                    </div>
-                                </div>
 
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-end h-100">
-                                        <a href="" class="text-reset">
-                                            <h5 class="card-title mb-3">JORDANS</h5>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-end h-100">
+                                            <a href="" class="text-reset">
+                                                <h5 class="card-title mb-3">JORDANS</h5>
+                                            </a>
+                                            <button id="addProductButton1" class="add-to-cart-btn circular-btn pink-bg"
+                                                    data-bs-toggle="tooltip" data-bs-placement="left"
+                                                    title="Add to cart"
+                                                    aria-label="Add to Table"
+                                                    data-product-name="Jordan's"
+                                                    data-product-category="Casual"
+                                                    data-product-price="549.99"
+                                                    data-product-image="../images/Products/Jordans.webp">
+                                                <span class="plus-sign">+</span>
+                                            </button>
+                                        </div>
+                                        <a href=""
+                                           class="text-reset d-flex justify-content-start align-items-end h-100">
+                                            <p>Casual</p>
                                         </a>
-                                        <button id="addProductButton1" class="add-to-cart-btn circular-btn pink-bg"
-                                                data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"
-                                                aria-label="Add to Table"
-                                                data-product-name="Jordan's"
-                                                data-product-category="Casual"
-                                                data-product-price="549.99"
-                                                data-product-image="../images/Products/Jordans.webp">
-                                            <span class="plus-sign">+</span>
-                                        </button>
+                                        <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$549.99</h6>
+                                        <!-- Add size element -->
+                                        <div class="size-selector">
+                                            <div class="size-options">
+                                                <input type="radio" id="product_1_size-1" name="size" value="7">
+                                                <label for="product_1_size-1">7</label>
+                                                <input type="radio" id="product_1_size-2" name="size" value="8">
+                                                <label for="product_1_size-2">8</label>
+                                                <input type="radio" id="product_1_size-3" name="size" value="9">
+                                                <label for="product_1_size-3">9</label>
+                                                <input type="radio" id="product_1_size-4" name="size" value="10">
+                                                <label for="product_1_size-4">10</label>
+                                                <input type="radio" id="product_1_size-5" name="size" value="11">
+                                                <label for="product_1_size-5">11</label>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="selectedSize_1" name="selectedSize" value="">
                                     </div>
-                                    <a href="" class="text-reset d-flex justify-content-start align-items-end h-100">
-                                        <p>Casual</p>
-                                    </a>
-                                    <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$549.99</h6>
-                                    <!-- Add size element -->
-                                    <div class="size-selector">
-                                        <div class="size-options">
-                                            <input type="radio" id="product_1_size-1" name="size" value="7">
-                                            <label for="product_1_size-1">7</label>
-                                            <input type="radio" id="product_1_size-2" name="size" value="8">
-                                            <label for="product_1_size-2">8</label>
-                                            <input type="radio" id="product_1_size-3" name="size" value="9">
-                                            <label for="product_1_size-3">9</label>
-                                            <input type="radio" id="product_1_size-4" name="size" value="10">
-                                            <label for="product_1_size-4">10</label>
-                                            <input type="radio" id="product_1_size-5" name="size" value="11">
-                                            <label for="product_1_size-5">11</label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-12 mb-4">
+                                <div class="card">
+                                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                         data-mdb-ripple-color="light">
+                                        <img src="https://www.sneakersnstuff.com/images/279864/ar0715-011-2.jpg"
+                                             class="w-100" alt=""/>
+
+                                        <div class="mask">
+                                            <div class="d-flex justify-content-start align-items-end h-100">
+                                                <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                            </div>
+                                        </div>
+                                        <div class="hover-overlay">
+                                            <div class="mask"
+                                                 style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                         </div>
                                     </div>
-                                    <input type="hidden" id="selectedSize_1" name="selectedSize" value="">
-                                </div>
 
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-end h-100">
+                                            <a href="" class="text-reset">
+                                                <h5 class="card-title mb-3">AIR JORDANS</h5>
+                                            </a>
+                                            <button id="addProductButton2" class="add-to-cart-btn circular-btn pink-bg"
+                                                    data-bs-toggle="tooltip" data-bs-placement="left"
+                                                    title="Add to cart"
+                                                    aria-label="Add to Table"
+                                                    data-product-name="Air Jordans"
+                                                    data-product-category="Sneakerz"
+                                                    data-product-price="269.99"
+                                                    data-product-image="../images/Products/Air Jordan.webp">
+                                                <span class="plus-sign">+</span>
+                                            </button>
+                                        </div>
+                                        <a href=""
+                                           class="text-reset d-flex justify-content-start align-items-end h-100">
+                                            <p>Sneakers</p>
+                                        </a>
+                                        <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$269.99</h6>
+                                        <!-- Add size element -->
+                                        <div class="size-selector">
+                                            <div class="size-options">
+                                                <input type="radio" id="product_2_size-1" name="size" value="7">
+                                                <label for="product_2_size-1">7</label>
+                                                <input type="radio" id="product_2_size-2" name="size" value="8">
+                                                <label for="product_2_size-2">8</label>
+                                                <input type="radio" id="product_2_size-3" name="size" value="9">
+                                                <label for="product_2_size-3">9</label>
+                                                <input type="radio" id="product_2_size-4" name="size" value="10">
+                                                <label for="product_2_size-4">10</label>
+                                                <input type="radio" id="product_2_size-5" name="size" value="11">
+                                                <label for="product_2_size-5">11</label>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="selectedSize_2" name="selectedSize" value="">
+                                    </div>
+
+                                </div>
                             </div>
+
+                            <div class="col-lg-4 col-md-12 mb-4">
+                                <div class="card">
+                                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                         data-mdb-ripple-color="light">
+                                        <img src="https://cdn.myshoptet.com/usr/www.bbns.cz/user/shop/big/2547_adidas-yeezy-boost-350-v2-salt.png?63b5debb"
+                                             class="w-100" alt=""/>
+
+                                        <div class="mask">
+                                            <div class="d-flex justify-content-start align-items-end h-100">
+                                                <h5><span class="badge bg-primary ms-2">Eco🌿</span></h5>
+                                            </div>
+                                        </div>
+                                        <div class="hover-overlay">
+                                            <div class="mask"
+                                                 style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-end h-100">
+                                            <a href="" class="text-reset">
+                                                <h5 class="card-title mb-3">YEEZY</h5>
+                                            </a>
+                                            <button id="addProductButton3" class="add-to-cart-btn circular-btn pink-bg"
+                                                    data-bs-toggle="tooltip" data-bs-placement="left"
+                                                    title="Add to cart"
+                                                    aria-label="Add to Table"
+                                                    data-product-name="Adidas Yeezy"
+                                                    data-product-category="Walking"
+                                                    data-product-price="799.99"
+                                                    data-product-image="../images/Products/Yeezzy.jpg">
+                                                <span class="plus-sign">+</span>
+                                            </button>
+                                        </div>
+                                        <a href=""
+                                           class="text-reset d-flex justify-content-start align-items-end h-100">
+                                            <p>Walking</p>
+                                        </a>
+                                        <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">
+                                            <s>$239.99</s><strong class="ms-2 text-danger">$180.99</strong></h6>
+                                        <!-- Add size element -->
+                                        <div class="size-selector">
+                                            <div class="size-options">
+                                                <input type="radio" id="product_3_size-1" name="size" value="7">
+                                                <label for="product_3_size-1">7</label>
+                                                <input type="radio" id="product_3_size-2" name="size" value="8">
+                                                <label for="product_3_size-2">8</label>
+                                                <input type="radio" id="product_3_size-3" name="size" value="9">
+                                                <label for="product_3_size-3">9</label>
+                                                <input type="radio" id="product_3_size-4" name="size" value="10">
+                                                <label for="product_3_size-4">10</label>
+                                                <input type="radio" id="product_3_size-5" name="size" value="11">
+                                                <label for="product_3_size-5">11</label>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="selectedSize_3" name="selectedSize" value="">
+                                    </div>
+
+                                </div>
+                            </div>
+
                         </div>
 
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <div class="card">
-                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                                     data-mdb-ripple-color="light">
-                                    <img src="https://www.sneakersnstuff.com/images/279864/ar0715-011-2.jpg"
-                                         class="w-100" alt=""/>
+                        <div class="row">
 
-                                    <div class="mask">
-                                        <div class="d-flex justify-content-start align-items-end h-100">
-                                            <h5><span class="badge bg-primary ms-2">New</span></h5>
+                            <div class="col-lg-4 col-md-12 mb-4">
+                                <div class="card">
+                                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                         data-mdb-ripple-color="light">
+                                        <img src="../images/Products/NB.webp"
+                                             class="w-100" alt=""/>
+
+                                        <div class="mask">
+                                            <div class="d-flex justify-content-start align-items-end h-100">
+                                                <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                            </div>
+                                        </div>
+                                        <div class="hover-overlay">
+                                            <div class="mask"
+                                                 style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                         </div>
                                     </div>
-                                    <div class="hover-overlay">
-                                        <div class="mask"
-                                             style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                    </div>
-                                </div>
 
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-end h-100">
-                                        <a href="" class="text-reset">
-                                            <h5 class="card-title mb-3">AIR JORDANS</h5>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-end h-100">
+                                            <a href="" class="text-reset">
+                                                <h5 class="card-title mb-3">NEW BALANCE</h5>
+                                            </a>
+                                            <button id="addProductButton4" class="add-to-cart-btn circular-btn pink-bg"
+                                                    data-bs-toggle="tooltip" data-bs-placement="left"
+                                                    title="Add to cart"
+                                                    aria-label="Add to Table"
+                                                    data-product-name="New Balance"
+                                                    data-product-category="Sports"
+                                                    data-product-price="139.99"
+                                                    data-product-image="../images/Products/NB.webp">
+                                                <span class="plus-sign">+</span>
+                                            </button>
+                                        </div>
+                                        <a href=""
+                                           class="text-reset d-flex justify-content-start align-items-end h-100">
+                                            <p>Sports</p>
                                         </a>
-                                        <button id="addProductButton2" class="add-to-cart-btn circular-btn pink-bg"
-                                                data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"
-                                                aria-label="Add to Table"
-                                                data-product-name="Air Jordans"
-                                                data-product-category="Sneakerz"
-                                                data-product-price="269.99"
-                                                data-product-image="../images/Products/Air Jordan.webp">
-                                            <span class="plus-sign">+</span>
-                                        </button>
-                                    </div>
-                                    <a href="" class="text-reset d-flex justify-content-start align-items-end h-100">
-                                        <p>Sneakers</p>
-                                    </a>
-                                    <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$269.99</h6>
-                                    <!-- Add size element -->
-                                    <div class="size-selector">
-                                        <div class="size-options">
-                                            <input type="radio" id="product_2_size-1" name="size" value="7">
-                                            <label for="product_2_size-1">7</label>
-                                            <input type="radio" id="product_2_size-2" name="size" value="8">
-                                            <label for="product_2_size-2">8</label>
-                                            <input type="radio" id="product_2_size-3" name="size" value="9">
-                                            <label for="product_2_size-3">9</label>
-                                            <input type="radio" id="product_2_size-4" name="size" value="10">
-                                            <label for="product_2_size-4">10</label>
-                                            <input type="radio" id="product_2_size-5" name="size" value="11">
-                                            <label for="product_2_size-5">11</label>
+                                        <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$139.99</h6>
+                                        <!-- Add size element -->
+                                        <div class="size-selector">
+                                            <div class="size-options">
+                                                <input type="radio" id="product_4_size-1" name="size" value="7">
+                                                <label for="product_4_size-1">7</label>
+                                                <input type="radio" id="product_4_size-2" name="size" value="8">
+                                                <label for="product_4_size-2">8</label>
+                                                <input type="radio" id="product_4_size-3" name="size" value="9">
+                                                <label for="product_4_size-3">9</label>
+                                                <input type="radio" id="product_4_size-4" name="size" value="10">
+                                                <label for="product_4_size-4">10</label>
+                                                <input type="radio" id="product_4_size-5" name="size" value="11">
+                                                <label for="product_4_size-5">11</label>
+                                            </div>
                                         </div>
+                                        <input type="hidden" id="selectedSize_4" name="selectedSize" value="">
                                     </div>
-                                    <input type="hidden" id="selectedSize_2" name="selectedSize" value="">
-                                </div>
 
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <div class="card">
-                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                                     data-mdb-ripple-color="light">
-                                    <img src="https://cdn.myshoptet.com/usr/www.bbns.cz/user/shop/big/2547_adidas-yeezy-boost-350-v2-salt.png?63b5debb"
-                                         class="w-100" alt=""/>
+                            <div class="col-lg-4 col-md-12 mb-4">
+                                <div class="card">
+                                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                         data-mdb-ripple-color="light">
+                                        <img src="../images/Products/Air Force 1.webp"
+                                             class="w-100" alt=""/>
 
-                                    <div class="mask">
-                                        <div class="d-flex justify-content-start align-items-end h-100">
-                                            <h5><span class="badge bg-primary ms-2">Eco🌿</span></h5>
+                                        <div class="mask">
+                                            <div class="d-flex justify-content-start align-items-end h-100">
+                                                <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                            </div>
+                                        </div>
+                                        <div class="hover-overlay">
+                                            <div class="mask"
+                                                 style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                         </div>
                                     </div>
-                                    <div class="hover-overlay">
-                                        <div class="mask"
-                                             style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                    </div>
-                                </div>
 
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-end h-100">
-                                        <a href="" class="text-reset">
-                                            <h5 class="card-title mb-3">YEEZY</h5>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-end h-100">
+                                            <a href="" class="text-reset">
+                                                <h5 class="card-title mb-3">NIKE AIR FORCE</h5>
+                                            </a>
+                                            <button id="addProductButton5" class="add-to-cart-btn circular-btn pink-bg"
+                                                    data-bs-toggle="tooltip" data-bs-placement="left"
+                                                    title="Add to cart"
+                                                    aria-label="Add to Table"
+                                                    data-product-name="Nike Air Force"
+                                                    data-product-category="Casual"
+                                                    data-product-price="159.99"
+                                                    data-product-image="../images/Products/Air Force 1.webp">
+                                                <span class="plus-sign">+</span>
+                                            </button>
+                                        </div>
+                                        <a href=""
+                                           class="text-reset d-flex justify-content-start align-items-end h-100">
+                                            <p>Casual</p>
                                         </a>
-                                        <button id="addProductButton3" class="add-to-cart-btn circular-btn pink-bg"
-                                                data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"
-                                                aria-label="Add to Table"
-                                                data-product-name="Adidas Yeezy"
-                                                data-product-category="Walking"
-                                                data-product-price="799.99"
-                                                data-product-image="../images/Products/Yeezzy.jpg">
-                                            <span class="plus-sign">+</span>
-                                        </button>
+                                        <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$159.99</h6>
+                                        <!-- Add size element -->
+                                        <div class="size-selector">
+                                            <div class="size-options">
+                                                <input type="radio" id="product_5_size-1" name="size" value="7">
+                                                <label for="product_5_size-1">7</label>
+                                                <input type="radio" id="product_5_size-2" name="size" value="8">
+                                                <label for="product_5_size-2">8</label>
+                                                <input type="radio" id="product_5_size-3" name="size" value="9">
+                                                <label for="product_5_size-3">9</label>
+                                                <input type="radio" id="product_5_size-4" name="size" value="10">
+                                                <label for="product_5_size-4">10</label>
+                                                <input type="radio" id="product_5_size-5" name="size" value="11">
+                                                <label for="product_5_size-5">11</label>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="selectedSize_5" name="selectedSize" value="">
                                     </div>
-                                    <a href="" class="text-reset d-flex justify-content-start align-items-end h-100">
-                                        <p>Walking</p>
-                                    </a>
-                                    <h6 class="mb-3 d-flex justify-content-start align-items-end h-100"><s>$239.99</s><strong class="ms-2 text-danger">$180.99</strong></h6>
-                                    <!-- Add size element -->
-                                    <div class="size-selector">
-                                        <div class="size-options">
-                                            <input type="radio" id="product_3_size-1" name="size" value="7">
-                                            <label for="product_3_size-1">7</label>
-                                            <input type="radio" id="product_3_size-2" name="size" value="8">
-                                            <label for="product_3_size-2">8</label>
-                                            <input type="radio" id="product_3_size-3" name="size" value="9">
-                                            <label for="product_3_size-3">9</label>
-                                            <input type="radio" id="product_3_size-4" name="size" value="10">
-                                            <label for="product_3_size-4">10</label>
-                                            <input type="radio" id="product_3_size-5" name="size" value="11">
-                                            <label for="product_3_size-5">11</label>
+
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-12 mb-4">
+                                <div class="card">
+                                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                         data-mdb-ripple-color="light">
+                                        <img src="https://www.jogging-point.com/dw/image/v2/BBDP_PRD/on/demandware.static/-/Sites-master-catalog/default/dw9dcaa9ba/images/005/149/04624000_0_1.jpg?q=80&sw=2000"
+                                             class="w-100" alt=""/>
+
+                                        <div class="mask">
+                                            <div class="d-flex justify-content-start align-items-end h-100">
+                                                <h5><span class="badge bg-primary ms-2">Eco🌿</span></h5>
+                                            </div>
+                                        </div>
+                                        <div class="hover-overlay">
+                                            <div class="mask"
+                                                 style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                         </div>
                                     </div>
-                                    <input type="hidden" id="selectedSize_3" name="selectedSize" value="">
+
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-end h-100">
+                                            <a href="" class="text-reset">
+                                                <h5 class="card-title mb-3">ADIDAS ULTRABOOST</h5>
+                                            </a>
+                                            <button id="addProductButton6" class="add-to-cart-btn circular-btn pink-bg"
+                                                    data-bs-toggle="tooltip" data-bs-placement="left"
+                                                    title="Add to cart"
+                                                    aria-label="Add to Table"
+                                                    data-product-name="Adidas Ultra Boost"
+                                                    data-product-category="Running"
+                                                    data-product-price="239.99"
+                                                    data-product-image="../images/Products/Adidas1.jpg">
+                                                <span class="plus-sign">+</span>
+                                            </button>
+                                        </div>
+                                        <a href=""
+                                           class="text-reset d-flex justify-content-start align-items-end h-100">
+                                            <p>Running</p>
+                                        </a>
+                                        <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$239.99</h6>
+                                        <!-- Add size element -->
+                                        <div class="size-selector">
+                                            <div class="size-options">
+                                                <input type="radio" id="product_6_size-1" name="size" value="7">
+                                                <label for="product_6_size-1">7</label>
+                                                <input type="radio" id="product_6_size-2" name="size" value="8">
+                                                <label for="product_6_size-2">8</label>
+                                                <input type="radio" id="product_6_size-3" name="size" value="9">
+                                                <label for="product_6_size-3">9</label>
+                                                <input type="radio" id="product_6_size-4" name="size" value="10">
+                                                <label for="product_6_size-4">10</label>
+                                                <input type="radio" id="product_6_size-5" name="size" value="11">
+                                                <label for="product_6_size-5">11</label>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="selectedSize_6" name="selectedSize" value="">
+                                    </div>
+
                                 </div>
-
                             </div>
-                        </div>
 
+                        </div>
 
                     </div>
 
-                    <div class="row">
+                    <div class="socks">
 
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <div class="card">
-                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                                     data-mdb-ripple-color="light">
-                                    <img src="../images/Products/NB.webp"
-                                         class="w-100" alt=""/>
+                        <div class="row">
 
-                                    <div class="mask">
-                                        <div class="d-flex justify-content-start align-items-end h-100">
-                                            <h5><span class="badge bg-primary ms-2">New</span></h5>
+                            <div class="col-lg-4 col-md-12 mb-4">
+                                <div class="card">
+                                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                         data-mdb-ripple-color="light">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_l9lbJC047RywyA5K01Gtik3owqG8JDEnbw&usqp=CAU"
+                                             class="w-100" alt=""/>
+
+                                        <div class="mask">
+                                            <div class="d-flex justify-content-start align-items-end h-100">
+                                                <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                            </div>
+                                        </div>
+                                        <div class="hover-overlay">
+                                            <div class="mask"
+                                                 style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                         </div>
                                     </div>
-                                    <div class="hover-overlay">
-                                        <div class="mask"
-                                             style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                    </div>
-                                </div>
 
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-end h-100">
-                                        <a href="" class="text-reset">
-                                            <h5 class="card-title mb-3">NEW BALANCE</h5>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-end h-100">
+                                            <a href="" class="text-reset">
+                                                <h5 class="card-title mb-3">NEW BALANCE</h5>
+                                            </a>
+                                            <button id="addProductButton7" class="add-to-cart-btn circular-btn pink-bg"
+                                                    data-bs-toggle="tooltip" data-bs-placement="left"
+                                                    title="Add to cart"
+                                                    aria-label="Add to Table"
+                                                    data-product-name="New Balance"
+                                                    data-product-category="Sports"
+                                                    data-product-price="19.99"
+                                                    data-product-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_l9lbJC047RywyA5K01Gtik3owqG8JDEnbw&usqp=CAU">
+                                                <span class="plus-sign">+</span>
+                                            </button>
+                                        </div>
+                                        <a href=""
+                                           class="text-reset d-flex justify-content-start align-items-end h-100">
+                                            <p>Sports</p>
                                         </a>
-                                        <button id="addProductButton4" class="add-to-cart-btn circular-btn pink-bg"
-                                                data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"
-                                                aria-label="Add to Table"
-                                                data-product-name="New Balance"
-                                                data-product-category="Sports"
-                                                data-product-price="139.99"
-                                                data-product-image="../images/Products/NB.webp">
-                                            <span class="plus-sign">+</span>
-                                        </button>
-                                    </div>
-                                    <a href="" class="text-reset d-flex justify-content-start align-items-end h-100">
-                                        <p>Sports</p>
-                                    </a>
-                                    <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$139.99</h6>
-                                    <!-- Add size element -->
-                                    <div class="size-selector">
-                                        <div class="size-options">
-                                            <input type="radio" id="product_4_size-1" name="size" value="7">
-                                            <label for="product_4_size-1">7</label>
-                                            <input type="radio" id="product_4_size-2" name="size" value="8">
-                                            <label for="product_4_size-2">8</label>
-                                            <input type="radio" id="product_4_size-3" name="size" value="9">
-                                            <label for="product_4_size-3">9</label>
-                                            <input type="radio" id="product_4_size-4" name="size" value="10">
-                                            <label for="product_4_size-4">10</label>
-                                            <input type="radio" id="product_4_size-5" name="size" value="11">
-                                            <label for="product_4_size-5">11</label>
+                                        <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$19.99</h6>
+                                        <!-- Add size element -->
+                                        <div class="size-selector">
+                                            <div class="size-options">
+                                                <input type="radio" id="product_7_size-1" name="size" value="S">
+                                                <label for="product_7_size-1">S</label>
+                                                <input type="radio" id="product_7_size-2" name="size" value="M">
+                                                <label for="product_7_size-2">M</label>
+                                                <input type="radio" id="product_7_size-3" name="size" value="L">
+                                                <label for="product_7_size-3">L</label>
+                                            </div>
                                         </div>
+                                        <input type="hidden" id="selectedSize_7" name="selectedSize" value="">
                                     </div>
-                                    <input type="hidden" id="selectedSize_4" name="selectedSize" value="">
-                                </div>
 
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <div class="card">
-                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                                     data-mdb-ripple-color="light">
-                                    <img src="../images/Products/Air Force 1.webp"
-                                         class="w-100" alt=""/>
+                            <div class="col-lg-4 col-md-12 mb-4">
+                                <div class="card">
+                                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                         data-mdb-ripple-color="light">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQhukbaw8FIBOuCp99B0MOQ89IoVs0nOiOKg&usqp=CAU"
+                                             class="w-100" alt=""/>
 
-                                    <div class="mask">
-                                        <div class="d-flex justify-content-start align-items-end h-100">
-                                            <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                        <div class="mask">
+                                            <div class="d-flex justify-content-start align-items-end h-100">
+                                                <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                            </div>
+                                        </div>
+                                        <div class="hover-overlay">
+                                            <div class="mask"
+                                                 style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                         </div>
                                     </div>
-                                    <div class="hover-overlay">
-                                        <div class="mask"
-                                             style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                    </div>
-                                </div>
 
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-end h-100">
-                                        <a href="" class="text-reset">
-                                            <h5 class="card-title mb-3">NIKE AIR FORCE</h5>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-end h-100">
+                                            <a href="" class="text-reset">
+                                                <h5 class="card-title mb-3">NIKE</h5>
+                                            </a>
+                                            <button id="addProductButton8" class="add-to-cart-btn circular-btn pink-bg"
+                                                    data-bs-toggle="tooltip" data-bs-placement="left"
+                                                    title="Add to cart"
+                                                    aria-label="Add to Table"
+                                                    data-product-name="Nike Socks"
+                                                    data-product-category="Casual"
+                                                    data-product-price="59.99"
+                                                    data-product-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQhukbaw8FIBOuCp99B0MOQ89IoVs0nOiOKg&usqp=CAU">
+                                                <span class="plus-sign">+</span>
+                                            </button>
+                                        </div>
+                                        <a href=""
+                                           class="text-reset d-flex justify-content-start align-items-end h-100">
+                                            <p>Casual</p>
                                         </a>
-                                        <button id="addProductButton5" class="add-to-cart-btn circular-btn pink-bg"
-                                                data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"
-                                                aria-label="Add to Table"
-                                                data-product-name="Nike Air Force"
-                                                data-product-category="Casual"
-                                                data-product-price="159.99"
-                                                data-product-image="../images/Products/Air Force 1.webp">
-                                            <span class="plus-sign">+</span>
-                                        </button>
-                                    </div>
-                                    <a href="" class="text-reset d-flex justify-content-start align-items-end h-100">
-                                        <p>Casual</p>
-                                    </a>
-                                    <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$159.99</h6>
-                                    <!-- Add size element -->
-                                    <div class="size-selector">
-                                        <div class="size-options">
-                                            <input type="radio" id="product_5_size-1" name="size" value="7">
-                                            <label for="product_5_size-1">7</label>
-                                            <input type="radio" id="product_5_size-2" name="size" value="8">
-                                            <label for="product_5_size-2">8</label>
-                                            <input type="radio" id="product_5_size-3" name="size" value="9">
-                                            <label for="product_5_size-3">9</label>
-                                            <input type="radio" id="product_5_size-4" name="size" value="10">
-                                            <label for="product_5_size-4">10</label>
-                                            <input type="radio" id="product_5_size-5" name="size" value="11">
-                                            <label for="product_5_size-5">11</label>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="selectedSize_5" name="selectedSize" value="">
-                                </div>
+                                        <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$59.99</h6>
+                                        <!-- Add size element -->
+                                        <div class="size-selector">
+                                            <div class="size-options">
+                                                <input type="radio" id="product_8_size-1" name="size" value="S">
+                                                <label for="product_8_size-1">S</label>
+                                                <input type="radio" id="product_8_size-2" name="size" value="M">
+                                                <label for="product_8_size-2">M</label>
+                                                <input type="radio" id="product_8_size-3" name="size" value="L">
+                                                <label for="product_8_size-3">L</label>
 
+                                            </div>
+                                        </div>
+                                        <input type="hidden" id="selectedSize_8" name="selectedSize" value="">
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <div class="card">
-                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                                     data-mdb-ripple-color="light">
-                                    <img src="https://www.jogging-point.com/dw/image/v2/BBDP_PRD/on/demandware.static/-/Sites-master-catalog/default/dw9dcaa9ba/images/005/149/04624000_0_1.jpg?q=80&sw=2000"
-                                         class="w-100" alt=""/>
+                            <div class="col-lg-4 col-md-12 mb-4">
+                                <div class="card">
+                                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                                         data-mdb-ripple-color="light">
+                                        <img src="data:image/jpeg;base64,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"
+                                             class="w-100" alt=""/>
 
-                                    <div class="mask">
-                                        <div class="d-flex justify-content-start align-items-end h-100">
-                                            <h5><span class="badge bg-primary ms-2">Eco🌿</span></h5>
+                                        <div class="mask">
+                                            <div class="d-flex justify-content-start align-items-end h-100">
+                                                <h5><span class="badge bg-primary ms-2">Eco🌿</span></h5>
+                                            </div>
+                                        </div>
+                                        <div class="hover-overlay">
+                                            <div class="mask"
+                                                 style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                         </div>
                                     </div>
-                                    <div class="hover-overlay">
-                                        <div class="mask"
-                                             style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                    </div>
-                                </div>
 
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-end h-100">
-                                        <a href="" class="text-reset">
-                                            <h5 class="card-title mb-3">ADIDAS ULTRABOOST</h5>
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-end h-100">
+                                            <a href="" class="text-reset">
+                                                <h5 class="card-title mb-3">ADIDAS</h5>
+                                            </a>
+                                            <button id="addProductButton9" class="add-to-cart-btn circular-btn pink-bg"
+                                                    data-bs-toggle="tooltip" data-bs-placement="left"
+                                                    title="Add to cart"
+                                                    aria-label="Add to Table"
+                                                    data-product-name="Adidas Socks"
+                                                    data-product-category="Running"
+                                                    data-product-price="39.99"
+                                                    data-product-image="data:image/jpeg;base64,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">
+                                                <span class="plus-sign">+</span>
+                                            </button>
+                                        </div>
+                                        <a href=""
+                                           class="text-reset d-flex justify-content-start align-items-end h-100">
+                                            <p>Running</p>
                                         </a>
-                                        <button id="addProductButton6" class="add-to-cart-btn circular-btn pink-bg"
-                                                data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"
-                                                aria-label="Add to Table"
-                                                data-product-name="Adidas Ultra Boost"
-                                                data-product-category="Running"
-                                                data-product-price="239.99"
-                                                data-product-image="../images/Products/Adidas1.jpg">
-                                            <span class="plus-sign">+</span>
-                                        </button>
-                                    </div>
-                                    <a href="" class="text-reset d-flex justify-content-start align-items-end h-100">
-                                        <p>Running</p>
-                                    </a>
-                                    <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$239.99</h6>
-                                    <!-- Add size element -->
-                                    <div class="size-selector">
-                                        <div class="size-options">
-                                            <input type="radio" id="product_6_size-1" name="size" value="7">
-                                            <label for="product_6_size-1">7</label>
-                                            <input type="radio" id="product_6_size-2" name="size" value="8">
-                                            <label for="product_6_size-2">8</label>
-                                            <input type="radio" id="product_6_size-3" name="size" value="9">
-                                            <label for="product_6_size-3">9</label>
-                                            <input type="radio" id="product_6_size-4" name="size" value="10">
-                                            <label for="product_6_size-4">10</label>
-                                            <input type="radio" id="product_6_size-5" name="size" value="11">
-                                            <label for="product_6_size-5">11</label>
+                                        <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$39.99</h6>
+                                        <!-- Add size element -->
+                                        <div class="size-selector">
+                                            <div class="size-options">
+                                                <input type="radio" id="product_9_size-1" name="size" value="S">
+                                                <label for="product_9_size-1">S</label>
+                                                <input type="radio" id="product_9_size-2" name="size" value="M">
+                                                <label for="product_9_size-2">M</label>
+                                                <input type="radio" id="product_9_size-3" name="size" value="L">
+                                                <label for="product_9_size-3">L</label>
+                                            </div>
                                         </div>
+                                        <input type="hidden" id="selectedSize_9" name="selectedSize" value="">
                                     </div>
-                                    <input type="hidden" id="selectedSize_6" name="selectedSize" value="">
-                                </div>
 
+                                </div>
                             </div>
-                        </div>
 
-                    </div>
-
-                    <div class="row">
-
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <div class="card">
-                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                                     data-mdb-ripple-color="light">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_l9lbJC047RywyA5K01Gtik3owqG8JDEnbw&usqp=CAU"
-                                         class="w-100" alt=""/>
-
-                                    <div class="mask">
-                                        <div class="d-flex justify-content-start align-items-end h-100">
-                                            <h5><span class="badge bg-primary ms-2">New</span></h5>
-                                        </div>
-                                    </div>
-                                    <div class="hover-overlay">
-                                        <div class="mask"
-                                             style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                    </div>
-                                </div>
-
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-end h-100">
-                                        <a href="" class="text-reset">
-                                            <h5 class="card-title mb-3">NEW BALANCE</h5>
-                                        </a>
-                                        <button id="addProductButton4" class="add-to-cart-btn circular-btn pink-bg"
-                                                data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"
-                                                aria-label="Add to Table"
-                                                data-product-name="New Balance"
-                                                data-product-category="Sports"
-                                                data-product-price="19.99"
-                                                data-product-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_l9lbJC047RywyA5K01Gtik3owqG8JDEnbw&usqp=CAU">
-                                            <span class="plus-sign">+</span>
-                                        </button>
-                                    </div>
-                                    <a href="" class="text-reset d-flex justify-content-start align-items-end h-100">
-                                        <p>Sports</p>
-                                    </a>
-                                    <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$19.99</h6>
-                                    <!-- Add size element -->
-                                    <div class="size-selector">
-                                        <div class="size-options">
-                                            <input type="radio" id="product_7_size-1" name="size" value="S">
-                                            <label for="product_7_size-1">S</label>
-                                            <input type="radio" id="product_7_size-2" name="size" value="M">
-                                            <label for="product_7_size-2">M</label>
-                                            <input type="radio" id="product_7_size-3" name="size" value="L">
-                                            <label for="product_7_size-3">L</label>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="selectedSize_4" name="selectedSize" value="">
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <div class="card">
-                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                                     data-mdb-ripple-color="light">
-                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQhukbaw8FIBOuCp99B0MOQ89IoVs0nOiOKg&usqp=CAU"
-                                         class="w-100" alt=""/>
-
-                                    <div class="mask">
-                                        <div class="d-flex justify-content-start align-items-end h-100">
-                                            <h5><span class="badge bg-primary ms-2">New</span></h5>
-                                        </div>
-                                    </div>
-                                    <div class="hover-overlay">
-                                        <div class="mask"
-                                             style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                    </div>
-                                </div>
-
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-end h-100">
-                                        <a href="" class="text-reset">
-                                            <h5 class="card-title mb-3">NIKE</h5>
-                                        </a>
-                                        <button id="addProductButton5" class="add-to-cart-btn circular-btn pink-bg"
-                                                data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"
-                                                aria-label="Add to Table"
-                                                data-product-name="Nike Socks"
-                                                data-product-category="Casual"
-                                                data-product-price="59.99"
-                                                data-product-image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQhukbaw8FIBOuCp99B0MOQ89IoVs0nOiOKg&usqp=CAU">
-                                            <span class="plus-sign">+</span>
-                                        </button>
-                                    </div>
-                                    <a href="" class="text-reset d-flex justify-content-start align-items-end h-100">
-                                        <p>Casual</p>
-                                    </a>
-                                    <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$59.99</h6>
-                                    <!-- Add size element -->
-                                    <div class="size-selector">
-                                        <div class="size-options">
-                                            <input type="radio" id="product_8_size-1" name="size" value="S">
-                                            <label for="product_8_size-1">S</label>
-                                            <input type="radio" id="product_8_size-2" name="size" value="M">
-                                            <label for="product_8_size-2">M</label>
-                                            <input type="radio" id="product_8_size-3" name="size" value="L">
-                                            <label for="product_8_size-3">L</label>
-
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="selectedSize_5" name="selectedSize" value="">
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-12 mb-4">
-                            <div class="card">
-                                <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
-                                     data-mdb-ripple-color="light">
-                                    <img src="data:image/jpeg;base64,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"
-                                         class="w-100" alt=""/>
-
-                                    <div class="mask">
-                                        <div class="d-flex justify-content-start align-items-end h-100">
-                                            <h5><span class="badge bg-primary ms-2">Eco🌿</span></h5>
-                                        </div>
-                                    </div>
-                                    <div class="hover-overlay">
-                                        <div class="mask"
-                                             style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                    </div>
-                                </div>
-
-                                <div class="card-body">
-                                    <div class="d-flex justify-content-between align-items-end h-100">
-                                        <a href="" class="text-reset">
-                                            <h5 class="card-title mb-3">ADIDAS</h5>
-                                        </a>
-                                        <button id="addProductButton6" class="add-to-cart-btn circular-btn pink-bg"
-                                                data-bs-toggle="tooltip" data-bs-placement="left" title="Add to cart"
-                                                aria-label="Add to Table"
-                                                data-product-name="Adidas Socks"
-                                                data-product-category="Running"
-                                                data-product-price="39.99"
-                                                data-product-image="data:image/jpeg;base64,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">
-                                            <span class="plus-sign">+</span>
-                                        </button>
-                                    </div>
-                                    <a href="" class="text-reset d-flex justify-content-start align-items-end h-100">
-                                        <p>Running</p>
-                                    </a>
-                                    <h6 class="mb-3 d-flex justify-content-start align-items-end h-100">$39.99</h6>
-                                    <!-- Add size element -->
-                                    <div class="size-selector">
-                                        <div class="size-options">
-                                            <input type="radio" id="product_9_size-1" name="size" value="S">
-                                            <label for="product_9_size-1">S</label>
-                                            <input type="radio" id="product_9_size-2" name="size" value="M">
-                                            <label for="product_9_size-2">M</label>
-                                            <input type="radio" id="product_9_size-3" name="size" value="L">
-                                            <label for="product_9_size-3">L</label>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="selectedSize_6" name="selectedSize" value="">
-                                </div>
-
-                            </div>
                         </div>
 
                     </div>
@@ -612,7 +652,6 @@
 
             </div>
         </section>
-
 
 
     </div>

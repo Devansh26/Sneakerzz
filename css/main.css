@@ -112,7 +112,7 @@ body, html {
 
 /* Main */
 main {
-    padding-top: 3%;
+    padding-top: 1%;
 }
 
 /* Main End */
@@ -121,18 +121,45 @@ main {
 
 /* Testimonials */
 main{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+
+}
+
+main h1{
+    padding-top: 3%;
+}
+
+#username {
+    font-size: 28px;
+    color: #2a2a2a;
+    position: relative;
+    display: inline-block;
+}
+
+#username::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ff6600;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-in-out;
+}
+
+#username:hover::before {
+    transform: scaleX(1);
 }
 
 .testimonials {
     display: grid;
     place-items: start;
-    min-height: 100svh;
+    min-height: 115svh;
     font-family: "Poppins", sans-serif;
     color: #26273e;
-    padding-block: min(20vh, 3rem);
+    padding-block: min(10vh, 1rem);
+    background-color: #f2f2f2;
 }
 
 @media screen and (min-width: 61.25rem) {
@@ -145,7 +172,7 @@ main{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     width: calc(min(90rem, 85%));
-    margin: 0 auto;
+    margin: 0 auto 1rem;
 }
 @media screen and (min-width: 61.25rem) {
     .testimonials section {
@@ -156,13 +183,13 @@ main{
     grid-column: span 12;
     text-transform: capitalize;
     font-size: 2.4rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-weight: 700;
 }
 @media screen and (min-width: 61.25rem) {
     .testimonials section h1 {
         font-size: 4rem;
-        margin-bottom: 4rem;
+        margin-bottom: 3rem;
     }
 }
 .testimonials section .cards {
@@ -253,7 +280,7 @@ section .cards .card.active img {
     padding-bottom: 2rem;
 }
 @media screen and (min-width: 61.25rem) {
-    section .content .contentBox .text {
+    .testimonials section .content .contentBox .text {
         padding-bottom: 0;
     }
 }
@@ -365,16 +392,102 @@ section .cards .card.active img {
 
 /* Product List  */
 
-#searchSection {
+section.d-flex {
     display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    padding-bottom: 1%;
+    flex-wrap: wrap;
+}
+
+#searchSection,
+#filterSection {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+#filterSection {
+    display: flex;
+    align-items: center;
     justify-content: center;
     max-width: 50%;
     padding-bottom: 1%;
 }
 
+#filterSection h4{
+    padding-right: 1%;
+}
+
+.form-check-inline {
+    margin-right: 20px;
+}
+
+.shoes, .socks {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    section.d-flex {
+        flex-direction: column; /* Stack sections vertically on smaller screens */
+    }
+
+    #searchSection,
+    #filterSection {
+        width: 100%; /* Take up full width on smaller screens */
+        box-sizing: border-box;
+        padding: 0 10px;
+    }
+
+    #filterSection {
+        padding-bottom: 2%; /* Adjust padding for better spacing on smaller screens */
+        text-align: center; /* Center the content horizontally */
+        align-items: center; /* Center vertically */
+        display: flex;
+        max-width: 100%;
+    }
+
+    #filterSection h4 {
+        padding-right: 1%;
+        margin: 0;
+    }
+
+    .shoes,
+    .socks {
+        display: block;
+        width: 100%; /* Take up full width on smaller screens */
+    }
+
+    .form-check-inline {
+        display: block;
+        margin-bottom: 10px;
+    }
+}
+
 #productsSection {
     padding-top: 0.5%;
 }
+
+.productList .card .card_image{
+    max-width: 100%;
+    height: auto;
+}
+
+.productList .card{
+    background-color: white;
+    overflow-y: hidden;
+}
+.card_image{
+    position: relative;
+    width: 260px;
+    filter: drop-shadow(5px 10px 15px rgba(8, 9, 13, .4));
+    transition: .5s;
+}
+
+.card:hover .card_image{
+    transform: translate(-0.5rem, -5.5rem) rotate(-15deg);
+}
+
 
 .size-selector {
     margin-top: 10px;

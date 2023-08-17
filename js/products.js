@@ -27,6 +27,39 @@ function checkSessionCookie() {
 
 // Main section
 
+// Function to update the product list based on filters
+function updateProductList() {
+    const shoesFilter = document.getElementById("shoesFilter");
+    const socksFilter = document.getElementById("socksFilter");
+
+    const shoesContainer = document.querySelector(".shoes");
+    const socksContainer = document.querySelector(".socks");
+
+    // Toggle visibility based on filters
+    if (shoesFilter.checked && socksFilter.checked) {
+        // Display both shoe and sock containers
+        shoesContainer.style.display = "block";
+        socksContainer.style.display = "block";
+    } else if (shoesFilter.checked) {
+        // Display only shoe container
+        shoesContainer.style.display = "block";
+        socksContainer.style.display = "none";
+    } else if (socksFilter.checked) {
+        // Display only sock container
+        shoesContainer.style.display = "none";
+        socksContainer.style.display = "block";
+    } else {
+        // Display both containers when no filter is selected
+        shoesContainer.style.display = "block";
+        socksContainer.style.display = "block";
+    }
+}
+
+// Attach event listeners to the filters
+document.getElementById("shoesFilter").addEventListener("change", updateProductList);
+document.getElementById("socksFilter").addEventListener("change", updateProductList);
+
+
 const onSearch = () => {
     const input = document.querySelector("#searchBar");
     const filter = input.value.toUpperCase();
@@ -45,6 +78,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Add event listener for the search bar
     searchBar.addEventListener('input', onSearch);
+
+    //updateProductList();
 });
 
 // document.getElementById("addProductButton").addEventListener("click", addToCart);
