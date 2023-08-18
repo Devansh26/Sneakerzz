@@ -209,6 +209,43 @@ function updateQuantity(quantityInput) {
             $(this).fadeIn(fadeTime);
         });
     });
+    const productName = productRow.find(".product-title").text();
+    const request = indexedDB.open("Sneakerzz", 1);
+        request.onsuccess = function (event) {
+            console.log("Products Opened successfully")
+            const db = event.target.result;
+            // Get the products object store
+            const transaction = db.transaction(["products"], "readwrite");
+            const objectStore = transaction.objectStore("products");
+
+            const getRequest = objectStore.getAll();
+
+            getRequest.onsuccess = function (event) {
+                console.log("Products Fetched successfully")
+                const products = event.target.result;
+                // Find the product with the matching name
+                const productToChange = products.find(product => product.productName === productName);
+                console.log(productToChange)
+                if (productToChange) {
+                    productToChange.quantity = quantity;    
+                    const updateRequest = objectStore.put(productToChange);
+                    updateRequest.onsuccess = function () {
+                        console.log("Quantity increased for existing product:", productToChange);
+                    };
+                    updateRequest.onerror = function (error) {
+                        console.error("Error updating product quantity:", error);
+                    };
+                    recalculateCart();
+                  
+                }
+            };
+
+            getRequest.onerror = function (event) {
+                console.error("Error fetching product:", event.target.error);
+            };
+
+        };
+
 }
 
 /* Remove item from cart */
