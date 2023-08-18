@@ -96,11 +96,12 @@ addToCartButtons.forEach((button) => {
     const userEmail = getCookie('userEmail');
 
     //button.addEventListener("click", () => addToCart(productName, category, price,image));
+    const sizeOptions = document.querySelectorAll('input[name="size"]');
 
     button.addEventListener("click", function () {
         const selectedSizeElement = document.querySelector('input[name="size"]:checked');
         const selectedSize = selectedSizeElement ? selectedSizeElement.value : "";
-
+        console.log(selectedSize);
         if (selectedSize === "") {
             toastBody.classList.add("bg-danger");
             toastBody.textContent = "Size not selected for " + productName + "(" + category + ")";
@@ -108,11 +109,24 @@ addToCartButtons.forEach((button) => {
             addToCart(userEmail, productName, category, price, image, selectedSize);
             toastBody.classList.remove("bg-danger");
             toastBody.textContent = "Added to cart";
-            selectedSizeElement.value = "";
+            //selectedSizeElement.value = "";
+
+            // Reset the checked property of radio buttons
+            sizeOptions.forEach(option => {
+                option.checked = false;
+            });
+
+            // // Delay clearing the selected radio button for 3 seconds
+            // setTimeout(() => {
+            //     sizeOptions.forEach(option => {
+            //         option.checked = false;
+            //     });
+            // }, 3000);// 3 seconds
         }
 
         // Show the Bootstrap toast
         const bootstrapToast = new bootstrap.Toast(toastEl);
+
         bootstrapToast.show();
     });
 
@@ -121,9 +135,9 @@ addToCartButtons.forEach((button) => {
 function addToCart(userEmail, productName, category, price,image,selectedSize) {
 
 
-    console.log("Product Name:", productName);
-    console.log("Category:", category);
-    console.log("Price:", price);
+    // console.log("Product Name:", productName);
+    // console.log("Category:", category);
+    // console.log("Price:", price);
 
     // Open the IndexedDB database (create it if it doesn't exist)
     const request = indexedDB.open("Sneakerzz",1);
@@ -150,12 +164,40 @@ function addToCart(userEmail, productName, category, price,image,selectedSize) {
 
         const userEmail = getCookie('userEmail');
 
+
         getAllRequest.onsuccess = function (event) {
             const products = event.target.result;
             const existingProduct = products.find((product) =>
                 product.productName.trim().toLowerCase() === productName.trim().toLowerCase() &&
                 product.size === selectedSize && product.user === userEmail
             );
+
+            const existingProducts = products.filter((product) =>
+                product.productName.trim().toLowerCase() === productName.trim().toLowerCase() &&
+                product.size !== selectedSize && product.user === userEmail
+            );
+
+            existingProducts.forEach(existingProduct => {
+                // Get the card's unique identifier for the existing product with different size
+                const cardId = existingProduct.productName.toLowerCase().replace(/\s+/g, "_");
+
+                const availableQtySpan = document.querySelector(`[data-card-id="${cardId}"] .available-qty`);
+
+                // Decrement the available_qty for each product with different size
+                existingProduct.available_qty = existingProduct.available_qty - 1;
+
+                // Update the product in the IndexedDB
+                const updateRequest = objectStore.put(existingProduct);
+                updateRequest.onsuccess = function () {
+                    console.log("Quantity decreased for existing product with all size:", existingProduct);
+                    if (availableQtySpan) {
+                        availableQtySpan.textContent = existingProduct.available_qty;
+                    }
+                };
+                updateRequest.onerror = function (error) {
+                    console.error("Error updating product quantity:", error);
+                };
+            });
 
             if (existingProduct) {
                 // If the product is found, increase the quantity field
@@ -168,6 +210,12 @@ function addToCart(userEmail, productName, category, price,image,selectedSize) {
                     console.error("Error updating product quantity:", error);
                 };
             } else {
+
+                const sameProductDifferentSize = products.find((product) =>
+                    product.productName.trim().toLowerCase() === productName.trim().toLowerCase() &&
+                    product.user === userEmail
+                );
+
                 // If the product is not found, add a new entry to the table
                 const productData = {
                     user:userEmail,
@@ -177,6 +225,7 @@ function addToCart(userEmail, productName, category, price,image,selectedSize) {
                     quantity: 1, // Set initial quantity to 1
                     productImage:image,
                     size:selectedSize,
+                    available_qty : sameProductDifferentSize ? sameProductDifferentSize.available_qty: 99, // Set initial quantity to 99
                 };
                 const addRequest = objectStore.add(productData);
 

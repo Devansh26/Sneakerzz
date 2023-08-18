@@ -20,36 +20,6 @@ for (let i = 0; i < card.length; i++) {
 
 $(document).ready(function () {
 
-    //const sessionToken = checkSessionCookie();
-    const username = document.getElementById("username");
-
-    // User is authenticated, perform necessary actions
-    //console.log("User is authenticated");
-    const userEmail = getCookie('userEmail');
-    if (getCookie('userEmail')) {
-        const request = indexedDB.open("Sneakerzz", 1);
-
-        request.onsuccess = function (event) {
-            const db = event.target.result;
-            const transaction = db.transaction(['users'], 'readonly');
-            const objectStore = transaction.objectStore('users');
-
-            //const userEmail = getCookie('userEmail');
-
-            const getRequest = objectStore.get(userEmail);
-
-            getRequest.onsuccess = function (event) {
-                const userData = event.target.result;
-
-                username.innerHTML = "Welcome " + userData.firstName;
-            };
-
-            transaction.oncomplete = function () {
-                db.close();
-            };
-        };
-    }
-
     const $vegasSlider = $('#vegas-slider');
     const $vegasIndicators = $('#vegas-indicators');
 
@@ -100,11 +70,4 @@ $(document).ready(function () {
     });
 });
 
-function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) {
-        return parts.pop().split(';').shift();
-    }
-}
 

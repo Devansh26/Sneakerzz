@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const user = document.getElementById('user');
 
     // Open a connection to the IndexedDB database
-    const request = indexedDB.open("Sneakerzz",2);
+    const request = indexedDB.open("Sneakerzz",1);
 
     request.onsuccess = function (event) {
         const db = event.target.result;

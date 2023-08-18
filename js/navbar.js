@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+
     // Attach the event listener to a parent element (navbarContainer)
     const navbarContainer = document.getElementById('navbarContainer');
     navbarContainer.addEventListener('click', function(event) {
@@ -7,9 +8,46 @@ document.addEventListener('DOMContentLoaded', function() {
             deleteSessionCookie();
         }
     });
+
+
+});
+
+window.addEventListener('load', function () {
+    //const sessionToken = checkSessionCookie();
+    const username = document.getElementById("username");
+
+    // User is authenticated, perform necessary actions
+    //console.log("User is authenticated");
+    const userEmail = getCookie('userEmail');
+
+    //console.log(username);
+    if (username && getCookie('userEmail')) {
+        const request = indexedDB.open("Sneakerzz", 1);
+
+        request.onsuccess = function (event) {
+            const db = event.target.result;
+            const transaction = db.transaction(['users'], 'readonly');
+            const objectStore = transaction.objectStore('users');
+
+            //const userEmail = getCookie('userEmail');
+
+            const getRequest = objectStore.get(userEmail);
+
+            getRequest.onsuccess = function (event) {
+                const userData = event.target.result;
+
+                username.innerHTML = userData.firstName;
+            };
+
+            transaction.oncomplete = function () {
+                db.close();
+            };
+        };
+    }
 });
 
 window.addEventListener("DOMContentLoaded", function () {
+
     const navbarContainer = document.getElementById("navbarContainer");
     const xhr = new XMLHttpRequest();
     xhr.open("GET", "navbar.html", true);
@@ -53,4 +91,12 @@ function deleteSessionCookie() {
     // Delete userEmail cookie
     document.cookie = 'userEmail=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
     window.location.href="../index.html";
+}
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) {
+        return parts.pop().split(';').shift();
+    }
 }
